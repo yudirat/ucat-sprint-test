@@ -44,7 +44,8 @@ export function Calculator() {
     }
 
     setWaitingForOperand(true)
-    setOperator(nextOperator)
+    setOperator(nextOperator === '=' ? null : nextOperator)
+    if (nextOperator === '=') setMemory(null)
   }
 
   const calculate = (left: number, right: number, op: string) => {
@@ -52,13 +53,13 @@ export function Calculator() {
       case '+': return left + right
       case '-': return left - right
       case '*': return left * right
-      case '/': return left / right
+      case '/': return right === 0 ? 0 : left / right
       default: return right
     }
   }
 
   return (
-    <div className="bg-slate-700 p-3 rounded-lg shadow-xl w-64 text-white">
+    <div className="bg-slate-700 p-3 rounded-lg shadow-xl w-64 text-white select-auto">
       <div className="bg-slate-900 p-2 mb-3 text-right text-2xl font-mono rounded overflow-hidden">
         {display}
       </div>
