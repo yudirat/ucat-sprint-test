@@ -64,6 +64,10 @@ This log tracks the logic, variables, and question mapping for all standardized 
 - **Variables:** Defects/1k: [2, 5, 8, 15, 22, 35]. Cost $50.
 - **Logic:** Total Cost = Defects * (TotalUnits/1000) * UnitDefectCost.
 
+**Scenario 4: Renewable Energy (TABLE)** - Questions 213-216
+- **Variables:** EcoPower(4.5k Wind, 3.2k Solar, £12.50), GreenGrid(3.8k, 5.1k, £10), WindWard(7.2k, 1.5k, £15), SolarSun(1.2k, 8.5k, £8.50).
+- **Logic:** Total = Wind + Solar. Subsidy = Energy * Rate.
+
 ---
 
 ### Sprint ID: 106 (QR Sprint D)

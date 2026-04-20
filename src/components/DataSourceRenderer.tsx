@@ -115,6 +115,10 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
   }
 
   if (activeType === 'LINE_GRAPH') {
+    const timeLabels = activeData.timeHours || activeData.months || activeData.labels || [];
+    const valA = activeData.vanA_Dist || activeData.fuelIndex || activeData.data || [];
+    const valB = activeData.vanB_Dist || activeData.volumeTons || null;
+
     return (
       <div className="flex flex-col h-full">
         {renderHeader()}
@@ -123,18 +127,18 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
             <thead>
               <tr className="bg-slate-800 text-white">
                 <th className="border border-slate-600 p-2 text-left">Data Point</th>
-                {activeData.timeHours.map((h: any) => <th key={h} className="border border-slate-600 p-2">{h}</th>)}
+                {timeLabels.map((h: any) => <th key={h} className="border border-slate-600 p-2">{h}</th>)}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               <tr className="bg-white">
                 <td className="border border-slate-200 p-2 font-bold bg-slate-100">Index/Value A</td>
-                {activeData.vanA_Dist.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center">{d}</td>)}
+                {valA.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center">{d}</td>)}
               </tr>
-              {activeData.vanB_Dist && (
+              {valB && (
                 <tr className="bg-slate-50">
                   <td className="border border-slate-200 p-2 font-bold bg-slate-100">Index/Value B</td>
-                  {activeData.vanB_Dist.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center">{d}</td>)}
+                  {valB.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center">{d}</td>)}
                 </tr>
               )}
             </tbody>
@@ -145,6 +149,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
   }
 
   if (activeType === 'MULTI_TABLE') {
+    const rows = activeData.equipment || activeData.assets || activeData.districts || activeData.renewableTable || [];
     return (
       <div className="space-y-0 divide-y divide-slate-200 flex flex-col h-full">
         {renderHeader()}
@@ -157,7 +162,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-200">
-            {activeData.equipment.map((row: any[], i: number) => (
+            {rows.map((row: any[], i: number) => (
               <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
                 {row.map((cell, j) => (
                   <td key={j} className="px-4 py-3 text-slate-700 font-medium">{cell}</td>

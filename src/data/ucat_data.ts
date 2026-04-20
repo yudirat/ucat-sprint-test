@@ -881,6 +881,22 @@ export const ucatSprintTests: UCATSet[] = [
             labels: ['1 Yr', '2 Yr', '3 Yr', '4 Yr', '5 Yr', '6 Yr'],
             data: [2, 5, 8, 15, 22, 35]
           }
+        },
+        {
+          id: 4,
+          questionRange: [213, 216],
+          type: 'TABLE',
+          title: 'Renewable Energy Portfolio',
+          context: 'Quarterly generation (MWh) and subsidiary subsidies.',
+          data: {
+            headers: ["Subsidiary", "Wind (MWh)", "Solar (MWh)", "Subsidy (£/MWh)"],
+            rows: [
+              ["EcoPower", 4500, 3200, 12.50],
+              ["GreenGrid", 3800, 5100, 10.00],
+              ["WindWard", 7200, 1500, 15.00],
+              ["SolarSun", 1200, 8500, 8.50]
+            ]
+          }
         }
       ]
     },
@@ -982,6 +998,34 @@ export const ucatSprintTests: UCATSet[] = [
         options: ["7.5", "8.0", "6.5", "9.2", "10.0"],
         answerIndex: 0,
         explanation: "(2 + 5 + 8 + 15) / 4 = 30 / 4 = 7.5."
+      },
+      {
+        id: 213,
+        text: "What is the total subsidy received by WindWard for its wind generation?",
+        options: ["£108,000", "£90,000", "£125,000", "£112,500", "£98,000"],
+        answerIndex: 0,
+        explanation: "7,200 MWh * £15.00/MWh = £108,000."
+      },
+      {
+        id: 214,
+        text: "Which subsidiary has the highest total energy generation (Wind + Solar)?",
+        options: ["EcoPower", "GreenGrid", "WindWard", "SolarSun", "GreenGrid and SolarSun equal"],
+        answerIndex: 3,
+        explanation: "Eco: 7.7k, Green: 8.9k, Wind: 8.7k, Solar: 9.7k. SolarSun is highest."
+      },
+      {
+        id: 215,
+        text: "What is the average subsidy rate across all four subsidiaries?",
+        options: ["£11.50", "£12.00", "£10.80", "£11.25", "£11.00"],
+        answerIndex: 0,
+        explanation: "(12.5 + 10.0 + 15.0 + 8.5) / 4 = £11.50."
+      },
+      {
+        id: 216,
+        text: "If EcoPower's Solar generation increases by 25%, what is its new total generation?",
+        options: ["8,500 MWh", "7,700 MWh", "8,200 MWh", "8,000 MWh", "7,950 MWh"],
+        answerIndex: 0,
+        explanation: "New Solar = 3,200 * 1.25 = 4,000. Total = 4,500 + 4,000 = 8,500 MWh."
       }
     ]
   },
