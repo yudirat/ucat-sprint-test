@@ -1,7 +1,7 @@
 /**
  * DATA INTEGRITY POLICY:
- * 1. SET IDs: Always use the next available integer (Current Max: 109).
- * 2. QUESTION IDs: Always use the next available integer (Current Max: 168).
+ * 1. SET IDs: Always use the next available integer (Current Max: 111).
+ * 2. QUESTION IDs: Always use the next available integer (Current Max: 212).
  * 3. NEVER reuse IDs even if a set is deleted, to ensure stable navigation and review links.
  */
 
@@ -1704,6 +1704,435 @@ export const ucatSprintTests: UCATSet[] = [
         options: ["$9,600", "$12,000", "$10,000", "$8,400", "$11,200"],
         answerIndex: 0,
         explanation: "Energy available = 80MWh. Price = $120. Revenue = 80 * 120 = $9,600."
+      }
+    ]
+  }
+      }
+    ]
+  },
+  {
+    setId: 110,
+    section: 'Verbal Reasoning',
+    title: "VR Sprint B",
+    type: "PASSAGE",
+    context: "Advanced linguistic analysis. 11 Minutes.",
+    dataSource: {
+      isSprint: true,
+      scenarios: [
+        {
+          id: 1,
+          type: 'PASSAGE',
+          title: 'Neuroplasticity and Language',
+          data: {
+            title: 'The Malleable Mind',
+            text: "For much of the 20th century, the prevailing neurological dogma was that the adult brain was a static organ, with fixed pathways established during critical windows of childhood development. This 'localizationist' view suggested that once a specific brain region was damaged, its associated function was lost forever. However, the discovery of neuroplasticity—the brain’s ability to reorganize itself by forming new neural connections—has fundamentally altered our understanding of recovery and learning. This is nowhere more evident than in the study of second-language acquisition in adults.\n\nWhile children are famously 'sponges' for language due to high synaptic density, adult brains utilize different mechanisms to achieve fluency. Rather than relying solely on the Broca’s area, adult learners often engage the prefrontal cortex more heavily, employing conscious analytical strategies to bypass the loss of earlier developmental flexibility. Functional MRI scans show that as an adult becomes proficient in a new language, the structural density of white matter in the corpus callosum increases, facilitating faster communication between hemispheres. This suggests that the 'critical period' for language, while real, is not an absolute barrier but a shift in the cognitive methodology of the brain."
+          }
+        },
+        {
+          id: 2,
+          type: 'PASSAGE',
+          title: 'Quantum Computing Ethics',
+          data: {
+            title: 'The Cryptographic Crisis',
+            text: "Quantum computing represents a paradigm shift in computational power, utilizing the principles of superposition and entanglement to solve problems that would take classical supercomputers millennia. While its potential for drug discovery and material science is immense, its implications for global security are deeply unsettling. Most modern encryption—from personal emails to state-level military communications—relies on RSA algorithms, which depend on the extreme difficulty of factoring large prime numbers. A sufficiently powerful quantum computer, using Shor’s algorithm, could break these codes in seconds.\n\nThis has triggered a 'cryptographic arms race' to develop post-quantum cryptography (PQC). The challenge is that PQC must be both resistant to quantum attacks and efficient enough to run on current classical hardware. Some theorists argue that the very existence of a quantum-capable nation-state would render traditional notions of national sovereignty obsolete, as the ability to decrypt any communication would provide a 'total information advantage.' Furthermore, the 'harvest now, decrypt later' strategy—where adversarial actors store encrypted data today in anticipation of future quantum capabilities—means that today’s secrets are already potentially compromised."
+          }
+        },
+        {
+          id: 3,
+          type: 'PASSAGE',
+          title: 'Deep-Sea Mining',
+          data: {
+            title: 'The Final Frontier',
+            text: "The transition to a green economy is dependent on rare earth metals like cobalt, nickel, and manganese, primarily used in electric vehicle batteries and renewable energy storage. As terrestrial mines face declining yields and increasing environmental scrutiny, the international mining industry has turned its attention to the Clarion-Clipperton Zone (CCZ), a vast expanse of the Pacific Ocean floor. Here, polymetallic nodules—potato-sized rocks rich in these minerals—lie in abundance at depths of 4,000 to 6,000 meters.\n\nHowever, marine biologists warn that deep-sea mining could cause irreversible damage to fragile, poorly understood ecosystems. The process involves 'vacuuming' the seafloor, which creates massive sediment plumes that can travel for hundreds of miles, potentially choking filter-feeding organisms and disrupting the marine food web. Moreover, many deep-sea species are extremely slow-growing and have restricted ranges, meaning localized mining could lead to total species extinction before they are even discovered. Proponents argue that the environmental cost of deep-sea mining is lower than that of land-based mining in rainforests, but critics maintain that we cannot accurately assess the risk to an environment as remote and under-researched as the abyssal plain."
+          }
+        },
+        {
+          id: 4,
+          type: 'PASSAGE',
+          title: 'The Roman Republic',
+          data: {
+            title: 'The Fall of the Republic',
+            text: "The transition of Rome from a Republic to an Empire is often characterized as a sudden collapse triggered by the ambition of Julius Caesar. While Caesar’s crossing of the Rubicon was a definitive turning point, the erosion of Republican norms had begun decades earlier. The Gracchi brothers’ attempts at land reform in the late 2nd century BC highlighted the growing chasm between the senatorial elite (optimates) and the landless masses (populares). When the Senate resorted to political assassination to stop these reforms, it broke the 'mos maiorum'—the unwritten code of ancestral custom that governed Roman political life.\n\nThis normalization of violence paved the way for the rise of military 'strongmen' like Marius and Sulla, who realized that the loyalty of their legions was more valuable than the approval of the Senate. Sulla’s dictatorship and his use of proscriptions—state-sanctioned execution lists—established a precedent that political power could be seized and maintained through sheer force. By the time Caesar arrived on the scene, the institutions of the Republic—the Senate, the Assemblies, and the magistracies—had already become hollow shells, unable to mediate the conflicting interests of a massive, militarized Mediterranean superpower."
+          }
+        },
+        {
+          id: 5,
+          type: 'PASSAGE',
+          title: 'Urban Micro-Climates',
+          data: {
+            title: 'Concrete Jungles',
+            text: "The Urban Heat Island (UHI) effect is a phenomenon where metropolitan areas experience significantly higher temperatures than their surrounding rural counterparts. This is primarily caused by the replacement of natural vegetation with asphalt and concrete, which have high thermal mass and low albedo, meaning they absorb and store solar radiation during the day and release it slowly at night. The lack of evapotranspiration—the process by which plants release water vapor to cool the air—further exacerbates the temperature differential.\n\nRecent research into 'urban micro-climates' suggests that UHI is not uniform across a city. Factors such as street orientation, 'urban canyons' (narrow streets flanked by tall buildings), and the distribution of green spaces create highly localized temperature zones. For instance, a street with high-rise buildings may benefit from 'wind tunneling' effects that lower temperatures at the ground level, while simultaneously trapping heat in the upper stories. These micro-climates have significant implications for public health, as heat-related mortality is often concentrated in 'hot spots' with poor ventilation and high building density. Mitigating UHI requires a multi-faceted approach, including the use of 'cool roofs', permeable pavements, and the strategic expansion of urban forestry."
+          }
+        }
+      ]
+    },
+    questions: [
+      {
+        id: 169,
+        text: "The 'localizationist' view mentioned in the text suggests that:",
+        options: ["The brain can form new neural connections", "Brain function is permanently lost if a specific area is damaged", "Adults learn languages faster than children", "The prefrontal cortex is the primary center for language", "Localization of function is impossible"],
+        answerIndex: 1,
+        explanation: "The text defines this view as suggesting 'once a specific brain region was damaged, its associated function was lost forever'."
+      },
+      {
+        id: 170,
+        text: "Based on the passage, fMRI scans of proficient adult learners show:",
+        options: ["A decrease in white matter density", "Heavy reliance on the Broca's area alone", "Increased structural density in the corpus callosum", "A return to childhood 'sponge-like' methodology", "That the critical period is an absolute barrier"],
+        answerIndex: 2,
+        explanation: "The text explicitly mentions fMRI scans show increased structural density of white matter in the corpus callosum."
+      },
+      {
+        id: 171,
+        text: "How does the adult methodology for language acquisition differ from children's according to the text?",
+        options: ["Adults rely more on conscious analytical strategies", "Adults have higher synaptic density", "Adults utilize fewer brain regions", "Adults bypass the prefrontal cortex", "Children are less flexible than adults"],
+        answerIndex: 0,
+        explanation: "The text states adult learners employ 'conscious analytical strategies to bypass the loss of earlier developmental flexibility'."
+      },
+      {
+        id: 172,
+        text: "The author's conclusion regarding the 'critical period' for language is that:",
+        options: ["It is a myth with no neurological basis", "It represents a complete end to neural malleability", "It is an absolute barrier for all learners", "It marks a shift in cognitive methodology rather than a total end", "It is only relevant for white matter density"],
+        answerIndex: 3,
+        explanation: "The author states it is 'not an absolute barrier but a shift in the cognitive methodology of the brain'."
+      },
+      {
+        id: 173,
+        text: "Why does the author consider quantum computing a threat to global security?",
+        options: ["It can factor large prime numbers effortlessly", "It is only available to adversarial nation-states", "It relies on Shor's algorithm for RSA algorithms", "It renders all drug discovery methods obsolete", "It could break current encryption methods in seconds"],
+        answerIndex: 4,
+        explanation: "The text says a quantum computer 'could break these codes in seconds', specifically referring to modern encryption."
+      },
+      {
+        id: 174,
+        text: "The 'harvest now, decrypt later' strategy is concerning because:",
+        options: ["Quantum computers are already active", "Adversaries are currently storing encrypted data for future use", "Today's secrets are being released publicly", "RSA algorithms have already been solved", "PQC is inefficient on classical hardware"],
+        answerIndex: 1,
+        explanation: "The text defines this as adversarial actors storing encrypted data today to decrypt once they have quantum capabilities."
+      },
+      {
+        id: 175,
+        text: "Which of the following is a requirement for Post-Quantum Cryptography (PQC) mentioned in the text?",
+        options: ["It must be based on RSA algorithms", "It must be faster than Shor's algorithm", "It must run efficiently on current classical hardware", "It requires the use of entangled supercomputers", "It must eliminate national sovereignty"],
+        answerIndex: 2,
+        explanation: "The text states PQC 'must be both resistant to quantum attacks and efficient enough to run on current classical hardware'."
+      },
+      {
+        id: 176,
+        text: "What is the primary reason for the interest in mining the Clarion-Clipperton Zone?",
+        options: ["The discovery of new species", "Declining yields in terrestrial mines", "The abundance of rainforest manganese", "Lower environmental scrutiny than land mining", "The CCZ is shallower than most oceans"],
+        answerIndex: 1,
+        explanation: "Interest is driven by terrestrial mines facing 'declining yields and increasing environmental scrutiny'."
+      },
+      {
+        id: 177,
+        text: "Marine biologists are concerned that sediment plumes from mining could:",
+        options: ["Accelerate species growth", "Disrupt the marine food web", "Increase the albedo of the ocean floor", "Create new terrestrial mines", "Make EV batteries obsolete"],
+        answerIndex: 1,
+        explanation: "The process creates plumes that 'can travel for hundreds of miles, potentially... disrupting the marine food web'."
+      },
+      {
+        id: 178,
+        text: "Proponents of deep-sea mining argue that:",
+        options: ["Deep-sea species are slow-growing", "The abyssal plain is well-researched", "Localized mining prevents extinction", "The environmental cost is lower than rainforest mining", "Filter-feeding organisms benefit from sediment"],
+        answerIndex: 3,
+        explanation: "Proponents argue that the environmental cost 'is lower than that of land-based mining in rainforests'."
+      },
+      {
+        id: 179,
+        text: "True or False: According to the text, we have enough research to accurately assess the risks of deep-sea mining.",
+        options: ["True", "False", "Can't Tell", "Only for the CCZ", "Only for manganese"],
+        answerIndex: 1,
+        explanation: "False. Critics maintain we 'cannot accurately assess the risk to an environment as remote and under-researched'."
+      },
+      {
+        id: 180,
+        text: "The author identifies which event as the start of the erosion of Republican norms?",
+        options: ["The crossing of the Rubicon", "Sulla's dictatorship", "The Gracchi brothers' land reform attempts", "The rise of military strongmen", "The abolition of the Senate"],
+        answerIndex: 2,
+        explanation: "The text states the erosion of norms 'began decades earlier' than Caesar, pointing to the Gracchi brothers' attempts."
+      },
+      {
+        id: 181,
+        text: "What was 'mos maiorum' in Roman political life?",
+        options: ["A written set of laws", "The Senate's formal veto power", "The legions' oath of loyalty", "A code of ancestral custom", "Caesar's specific military strategy"],
+        answerIndex: 3,
+        explanation: "The text defines it as 'the unwritten code of ancestral custom'."
+      },
+      {
+        id: 182,
+        text: "According to the passage, military 'strongmen' gained power because:",
+        options: ["They had the approval of the Senate", "They abolished the Assemblies", "Soldiers were more loyal to their leaders than the state", "They ignored the Gracchi brothers", "The magistracies were eliminated"],
+        answerIndex: 2,
+        explanation: "The text says they realized the 'loyalty of their legions was more valuable than the approval of the Senate'."
+      },
+      {
+        id: 183,
+        text: "The author describes the institutions of the Republic by Caesar's time as:",
+        options: ["Hollow shells", "Highly functional", "Optimates-only clubs", "Military magistracies", "Superpower Assemblies"],
+        answerIndex: 0,
+        explanation: "The text explicitly calls them 'hollow shells'."
+      },
+      {
+        id: 184,
+        text: "The Urban Heat Island effect is primarily caused by:",
+        options: ["Evapotranspiration of urban forestry", "High building albedo", "Asphalt and concrete absorbing and releasing radiation", "Wind tunneling in urban canyons", "Nighttime solar radiation"],
+        answerIndex: 2,
+        explanation: "UHI is caused by materials that 'absorb and store solar radiation during the day and release it slowly at night'."
+      },
+      {
+        id: 185,
+        text: "How do 'urban canyons' affect local micro-climates according to the text?",
+        options: ["They decrease thermal mass", "They increase albedo", "They can lower ground-level temperatures via wind tunneling", "They eliminate the UHI effect", "They prevent heat from reaching upper stories"],
+        answerIndex: 2,
+        explanation: "The text states they 'may benefit from wind tunneling effects that lower temperatures at the ground level'."
+      },
+      {
+        id: 186,
+        text: "Evapotranspiration is defined by the author as:",
+        options: ["The storage of heat in concrete", "Plants releasing water vapor to cool the air", "The absorption of radiation by asphalt", "The creation of narrow urban streets", "The slow release of heat at night"],
+        answerIndex: 1,
+        explanation: "The text defines it as 'the process by which plants release water vapor to cool the air'."
+      },
+      {
+        id: 187,
+        text: "Heat-related mortality is most often found in which city zones?",
+        options: ["Upper stories of skyscrapers", "Rural counterparts", "Abyssal plains", "Zones with poor ventilation and high building density", "Permeable pavement areas"],
+        answerIndex: 3,
+        explanation: "The text states mortality is concentrated in 'hot spots with poor ventilation and high building density'."
+      },
+      {
+        id: 188,
+        text: "Which of the following is NOT mentioned as a way to mitigate the UHI effect?",
+        options: ["Cool roofs", "Permeable pavements", "Expansion of urban forestry", "Increasing street width", "Strategic green spaces"],
+        answerIndex: 3,
+        explanation: "The text mentions cool roofs, permeable pavements, forestry, and green spaces, but does not mention increasing street width."
+      },
+      {
+        id: 189,
+        text: "What is the relationship between 'thermal mass' and heat storage mentioned in the text?",
+        options: ["High thermal mass leads to low heat storage", "Low thermal mass increases albedo", "Asphalt has low thermal mass", "High thermal mass allows materials to absorb and store radiation", "Thermal mass prevents radiation absorption"],
+        answerIndex: 3,
+        explanation: "The text notes asphalt and concrete have 'high thermal mass... which absorb and store solar radiation'."
+      },
+      {
+        id: 190,
+        text: "The author's tone regarding the green economy's reliance on rare earth metals is best described as:",
+        options: ["Uncritically supportive", "Highlighting a complex dilemma", "Dismissive of environmental risks", "Purely pessimistic", "Indifferent"],
+        answerIndex: 1,
+        explanation: "The author frames it as a choice between declining terrestrial mines/environmental scrutiny and deep-sea risks, showing a complex dilemma."
+      }
+    ]
+  },
+  {
+    setId: 111,
+    section: 'Verbal Reasoning',
+    title: "VR Sprint C",
+    type: "PASSAGE",
+    context: "Elite reading comprehension. 11 Minutes.",
+    dataSource: {
+      isSprint: true,
+      scenarios: [
+        {
+          id: 1,
+          type: 'PASSAGE',
+          title: 'Existentialism in Literature',
+          data: {
+            title: 'The Absurdist Hero',
+            text: "Albert Camus’ concept of 'the Absurd' arises from the conflict between the human longing for order and meaning and the 'silent, unreasonable world.' In his essay 'The Myth of Sisyphus,' Camus argues that recognizing this absurdity is not a cause for despair but an invitation to live with greater intensity. Sisyphus, condemned by the gods to roll a boulder up a hill for eternity only for it to roll back down, becomes the ultimate absurdist hero when he accepts his fate with consciousness. Camus famously concludes that 'one must imagine Sisyphus happy.'\n\nCritics of existentialism often argue that this philosophy leads to moral nihilism—the belief that since life has no inherent meaning, there is no basis for ethical behavior. Camus, however, distinguished between 'metaphysical rebellion' and 'political rebellion.' In his later work 'The Rebel,' he argued that the very act of rebelling against the absurdity of existence creates a shared human identity. If a person rebels against suffering, they do so not just for themselves but for all of humanity, establishing a foundation for solidarity and justice that does not require a divine or external mandate."
+          }
+        },
+        {
+          id: 2,
+          type: 'PASSAGE',
+          title: 'Genetic Engineering Policy',
+          data: {
+            title: 'The CRISPR Conundrum',
+            text: "The advent of CRISPR-Cas9 technology has brought the possibility of human germline editing—the modification of genes in embryos that will be passed on to future generations—into the realm of reality. Proponents argue that this could eliminate devastating hereditary diseases like Huntington’s and cystic fibrosis, saving countless lives. However, the ethical implications are profound. Bioethicists warn of a 'slippery slope' toward 'designer babies,' where genetic traits are selected for enhancement (such as intelligence or physical beauty) rather than purely for medical necessity.\n\nFrom a policy perspective, the challenge is that science moves faster than international law. While many countries have banned germline editing, others have loosely regulated environments, creating the risk of 'genetic tourism.' Furthermore, the long-term effects of altering the human gene pool are unknown; a modification that provides resistance to one disease might inadvertently increase susceptibility to another. There is also the issue of equity: if genetic enhancements are only available to the wealthy, it could create a biological caste system, entrenching social inequality into our very DNA. Regulation must therefore balance the urge for medical progress with a global commitment to human rights and evolutionary stability."
+          }
+        },
+        {
+          id: 3,
+          type: 'PASSAGE',
+          title: 'Medieval Guild Dynamics',
+          data: {
+            title: 'Masters and Apprentices',
+            text: "During the High Middle Ages, craft guilds were the primary economic and social units of urban Europe. These organizations held a monopoly over their respective trades, regulating everything from product quality to the number of hours a master could work. To become a master, an individual had to progress through a rigid hierarchy, starting as an apprentice—often as young as twelve—and then serving as a journeyman, a skilled worker who traveled between workshops to gain experience. The final step was the submission of a 'masterpiece' to the guild elders, proving their technical proficiency.\n\nWhile guilds provided social security for their members and maintained high standards of craftsmanship, they were also inherently exclusionary. They often restricted membership to the sons of existing masters, creating a hereditary elite that stifled economic mobility. By the 16th century, the guild system began to clash with the rising tide of merchant capitalism. Independent entrepreneurs sought to bypass guild regulations by moving production to rural areas—a process known as the 'putting-out system.' This allowed for mass production at lower costs, eventually leading to the obsolescence of the guild model and the dawn of the Industrial Revolution."
+          }
+        },
+        {
+          id: 4,
+          type: 'PASSAGE',
+          title: 'Behavioral Economics',
+          data: {
+            title: 'The Irrational Consumer',
+            text: "Classical economic theory assumes that humans are 'homo economicus'—rational actors who consistently make decisions that maximize their personal utility. Behavioral economics, however, challenges this assumption by integrating insights from psychology. One of the most significant concepts is 'loss aversion,' which suggests that the pain of losing something is twice as powerful as the joy of gaining it. This explains why people are often reluctant to sell stocks that have dropped in value, even when the rational choice is to cut their losses.\n\nAnother key finding is 'choice architecture'—the idea that the way options are presented significantly influences the outcome. For example, countries that make organ donation an 'opt-out' system (where everyone is a donor unless they specify otherwise) have much higher participation rates than those with 'opt-in' systems. This 'nudging' has become a powerful tool for policymakers, but it raises questions about paternalism. Critics argue that even if nudges are designed for the public good, they manipulate individual autonomy. Supporters contend that since there is no such thing as a neutral presentation of choices, it is better to design environments that encourage beneficial behaviors."
+          }
+        },
+        {
+          id: 5,
+          type: 'PASSAGE',
+          title: 'Exoplanet Atmospheric Chemistry',
+          data: {
+            title: 'Searching for Biosignatures',
+            text: "The search for extraterrestrial life has shifted from the detection of radio signals to the analysis of exoplanet atmospheres. By using spectroscopy, astronomers can identify the chemical composition of light filtering through a planet’s atmosphere as it passes in front of its star. The goal is to find 'biosignatures'—gases like oxygen, ozone, and methane that are unlikely to exist in large quantities without the presence of life. On Earth, the coexistence of methane and oxygen is a strong biosignature, as these gases react with each other and would disappear if not continuously replenished by biological processes.\n\nHowever, interpreting these signals is fraught with difficulty. Atmospheric models have shown that non-biological processes can also produce 'false positives.' For example, ultraviolet radiation can break down water vapor in a planet's upper atmosphere, releasing oxygen that mimics the presence of photosynthetic life. Similarly, geological activity can release methane. To confirm a biosignature, astronomers must look for a 'chemical disequilibrium'—a state where multiple gases exist in ratios that cannot be explained by volcanic or atmospheric chemistry alone. The upcoming launch of next-generation space telescopes promises to provide the high-resolution data needed to move from detection to confirmation."
+          }
+        }
+      ]
+    },
+    questions: [
+      {
+        id: 191,
+        text: "According to Camus, 'the Absurd' is a result of:",
+        options: ["A lack of orderly governments", "The conflict between human desire for meaning and a silent world", "The eternal punishment of the gods", "A shared human identity", "Moral nihilism"],
+        answerIndex: 1,
+        explanation: "The text defines 'the Absurd' as the conflict between the longing for order and the 'silent, unreasonable world'."
+      },
+      {
+        id: 192,
+        text: "What does Camus suggest is the result of recognizing the absurdity of existence?",
+        options: ["A descent into moral nihilism", "A cause for despair and isolation", "An invitation to live with greater intensity", "A need for a divine mandate", "The end of metaphysical rebellion"],
+        answerIndex: 2,
+        explanation: "Camus argues that recognizing absurdity is 'an invitation to live with greater intensity'."
+      },
+      {
+        id: 193,
+        text: "In 'The Rebel,' Camus argues that rebellion against suffering leads to:",
+        options: ["The breakdown of society", "A shared human identity and solidarity", "The establishment of a divine mandate", "Political nihilism", "The rolling back of the boulder"],
+        answerIndex: 1,
+        explanation: "The text says rebelling against suffering 'creates a shared human identity' and establishes 'solidarity and justice'."
+      },
+      {
+        id: 194,
+        text: "True or False: Critics of existentialism believe that the philosophy provides a strong basis for ethical behavior.",
+        options: ["True", "False", "Can't Tell", "Only for Camus", "Only for Sisyphus"],
+        answerIndex: 1,
+        explanation: "False. The text says critics argue existentialism 'leads to moral nihilism' and lacks a basis for ethical behavior."
+      },
+      {
+        id: 195,
+        text: "CRISPR-Cas9 technology makes which of the following possible for the first time?",
+        options: ["Treating Huntington's with drugs", "Eliminating all diseases globally", "Modifying genes in embryos passed to future generations", "Creating intelligence in robots", "Banning international genetic tourism"],
+        answerIndex: 2,
+        explanation: "The text states the technology makes 'human germline editing... the modification of genes in embryos that will be passed on to future generations' a reality."
+      },
+      {
+        id: 196,
+        text: "The term 'genetic tourism' refers to:",
+        options: ["Scientists traveling for research", "People seeking genetic editing in countries with loose regulation", "Visiting rainforests to collect rare metal", "Wealthy people traveling to see exoplanets", "A biological caste system"],
+        answerIndex: 1,
+        explanation: "The passage links loose regulation in some countries to the risk of 'genetic tourism'."
+      },
+      {
+        id: 197,
+        text: "Which of the following is an equity concern regarding genetic enhancement?",
+        options: ["Increased susceptibility to new diseases", "Science moving faster than international law", "The creation of a biological caste system", "The use of CRISPR on embryos", "Evolutionary instability"],
+        answerIndex: 2,
+        explanation: "The text says if enhancements are only for the wealthy, it 'could create a biological caste system'."
+      },
+      {
+        id: 198,
+        text: "What is the policy challenge regarding germline editing mentioned in the text?",
+        options: ["Science is too slow for legislation", "No country has banned the practice", "International law moves slower than scientific progress", "Hereditary diseases are too difficult to identify", "Embryos are not legally protected"],
+        answerIndex: 2,
+        explanation: "The text says 'the challenge is that science moves faster than international law'."
+      },
+      {
+        id: 199,
+        text: "In the medieval guild system, what was a 'journeyman'?",
+        options: ["A master's son who inherited a workshop", "A young apprentice of twelve", "A skilled worker who traveled between workshops", "A merchant capitalist", "A rural producer"],
+        answerIndex: 2,
+        explanation: "The text defines a journeyman as 'a skilled worker who traveled between workshops to gain experience'."
+      },
+      {
+        id: 200,
+        text: "What was the 'masterpiece' in the context of medieval guilds?",
+        options: ["A monopoly over a specific trade", "A set of rigid work-hour regulations", "A project submitted to elders to prove proficiency", "The putting-out system", "A rural mass-produced item"],
+        answerIndex: 2,
+        explanation: "It was the 'submission of a masterpiece to the guild elders, proving their technical proficiency'."
+      },
+      {
+        id: 201,
+        text: "The 'putting-out system' was used by entrepreneurs to:",
+        options: ["Strengthen the power of guilds", "Bypass guild regulations and lower costs", "Increase the product quality of masters", "Provide social security for journeymen", "End merchant capitalism"],
+        answerIndex: 1,
+        explanation: "Entrepreneurs 'sought to bypass guild regulations by moving production to rural areas... known as the putting-out system'."
+      },
+      {
+        id: 202,
+        text: "What was a negative social consequence of the guild system mentioned in the text?",
+        options: ["Low product quality", "Poor work standards", "Stifled economic mobility due to hereditary membership", "Mass production in rural areas", "The Industrial Revolution"],
+        answerIndex: 2,
+        explanation: "Guilds 'restricted membership to the sons of existing masters... which stifled economic mobility'."
+      },
+      {
+        id: 203,
+        text: "The concept of 'homo economicus' assumes that humans are:",
+        options: ["Psychologically driven", "Irrational decision-makers", "Rational actors maximizing personal utility", "Influenced by choice architecture", "Averse to all gains"],
+        answerIndex: 2,
+        explanation: "It assumes they are 'rational actors who consistently make decisions that maximize their personal utility'."
+      },
+      {
+        id: 204,
+        text: "Behavioral economics suggests that 'loss aversion' makes people:",
+        options: ["Joyful when gaining things", "Twice as affected by losses as by gains", "Rational when selling stocks", "Likely to donate organs automatically", "Neutral to all presentations of choice"],
+        answerIndex: 1,
+        explanation: "Loss aversion 'suggests that the pain of losing something is twice as powerful as the joy of gaining it'."
+      },
+      {
+        id: 205,
+        text: "The high participation rates in organ donation in some countries are attributed to:",
+        options: ["Opt-in choice architecture", "Opt-out choice architecture", "A lack of choice architecture", "Rational homo economicus behavior", "The pain of loss aversion"],
+        answerIndex: 1,
+        explanation: "Higher rates are found in countries with 'opt-out' systems, a form of nudging."
+      },
+      {
+        id: 206,
+        text: "Critics of 'nudging' argue that it:",
+        options: ["Is always neutral", "Encourages beneficial behavior", "Manipulates individual autonomy", "Is twice as powerful as joy", "Maximizes personal utility"],
+        answerIndex: 2,
+        explanation: "Critics argue that nudges 'manipulate individual autonomy'."
+      },
+      {
+        id: 207,
+        text: "How do astronomers identify the chemical composition of exoplanet atmospheres?",
+        options: ["Radio signal detection", "Direct photography of the surface", "Using spectroscopy on light filtering through the atmosphere", "Measuring volcanic activity", "Analyzing ultraviolet radiation"],
+        answerIndex: 2,
+        explanation: "They identify composition 'by using spectroscopy, astronomers can identify the chemical composition of light filtering through a planet's atmosphere'."
+      },
+      {
+        id: 208,
+        text: "Oxygen and methane together on Earth are considered a strong biosignature because:",
+        options: ["They are produced by radio signals", "They react with each other and need biological replenishment", "They are geological by-products", "They exist in the upper atmosphere only", "They create water vapor under UV light"],
+        answerIndex: 1,
+        explanation: "They 'react with each other and would disappear if not continuously replenished by biological processes'."
+      },
+      {
+        id: 209,
+        text: "An example of a 'false positive' biosignature mentioned is:",
+        options: ["Methane reacting with ozone", "Ultraviolet radiation breaking down water vapor to release oxygen", "Radio signals from distant galaxies", "The presence of a chemical disequilibrium", "Proficient adult language acquisition"],
+        answerIndex: 1,
+        explanation: "The text says UV radiation can break down water vapor, 'releasing oxygen that mimics the presence of photosynthetic life'."
+      },
+      {
+        id: 210,
+        text: "To confirm life, astronomers look for 'chemical disequilibrium', which is defined as:",
+        options: ["A state where gases are in volcanic ratio", "Atmospheric ratios that can only be explained by life", "A lack of ultraviolet radiation", "False positive oxygen signals", "A neutral presentation of choices"],
+        answerIndex: 1,
+        explanation: "Disequilibrium is 'a state where multiple gases exist in ratios that cannot be explained by volcanic or atmospheric chemistry alone'."
+      },
+      {
+        id: 211,
+        text: "The primary purpose of next-generation space telescopes in this context is to:",
+        options: ["Detect radio signals from exoplanets", "Provide high-resolution data to confirm biosignatures", "Search for radio waves from the CCZ", "Bypass international law", "Replace spectroscopic analysis"],
+        answerIndex: 1,
+        explanation: "They promise to 'provide the high-resolution data needed to move from detection to confirmation'."
+      },
+      {
+        id: 212,
+        text: "The author's tone regarding the future of biosignature research is:",
+        options: ["Skeptical and dismissive", "Cautiously optimistic with future technology", "Indifferent to chemical composition", "Certain that life has already been found", "Alarmed by false positives"],
+        answerIndex: 1,
+        explanation: "The author notes difficulties but points to next-generation telescopes as a path to confirmation, showing cautious optimism."
       }
     ]
   }

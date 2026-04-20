@@ -32,8 +32,8 @@
 - [x] Transition to 2025 UCAT section structure (removing Abstract Reasoning)
 - [x] Selection screen for individual section sprints
 - [x] Implement **Quantitative Reasoning** Sprints (108 Qs total / 6 Sprints)
-- [x] Implement **Verbal Reasoning** Sprint (22 Qs / 11 Mins)
-- [x] Implement **Decision Making** Sprint (18 Qs / 18.5 Mins) - Planning Partial Credit
+- [x] Implement **Verbal Reasoning** Sprints (66 Qs total / 3 Sprints)
+- [ ] Implement **Decision Making** Sprint (18 Qs / 18.5 Mins) - Planning Partial Credit
 - [ ] Implement **Situational Judgement** Sprint (34 Qs / 13 Mins)
 - [x] Logic audit and Sprint Dev Log initialization
 - [x] Implement **Partial Credit Scoring** for Syllogisms and SJT

@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - 2026-04-20
+### Added
+- **Advanced VR Sprints (B & C):** Added 44 new Verbal Reasoning questions (66 total VR items) across 10 complex new passages.
+- **High-Complexity Stimuli:** New passages feature technical and academic themes including Quantum Cryptography, Neuroplasticity, Existential Philosophy, and Exoplanet Spectroscopy.
+- **Nuanced Explanations:** Enhanced explanations focusing on inference and tone detection logic.
+
 ## [1.8.0] - 2026-04-20
-### Fixed
+...
+
 - **Data Integrity Overhaul:** Systematically re-indexed all question IDs (1-168) and Sprint Set IDs (101-109) to eliminate collisions and ensure stable navigation.
 - **Mathematical Logic Audit:** Verified every calculation across 6 QR sprints (108 items). Corrected errors in Sprint F (VC Valuation) and Sprint C (Shipping Fuel Costs).
 - **Explanation Clarity:** Improved the pedagogical quality of explanations for Situational Judgement and Decision Making items.

@@ -122,6 +122,16 @@ This log tracks the logic, variables, and question mapping for all standardized 
 - **Themes:** Arctic Permafrost, Telemedicine, Himba Linguistics, Grid Stability, Renaissance Oil Paint.
 - **Logic:** Reading comprehension (Facts, Inference, True/False/Can't Tell).
 
+### Sprint ID: 110 (VR Sprint B - Advanced)
+**Questions 169-190**
+- **Themes:** Neuroplasticity (Language), Quantum Ethics (Cryptography), Deep-Sea Mining (Pacific CCZ), Roman Republic Fall (Political Norms), Urban Micro-Climates (Heat Islands).
+- **Logic:** Complex inference, vocabulary-in-context, and multi-paragraph synthesis.
+
+### Sprint ID: 111 (VR Sprint C - Elite)
+**Questions 191-212**
+- **Themes:** Albert Camus (Existentialism), CRISPR Policy (Genetic Editing), Medieval Guilds (Economic History), Behavioral Economics (Loss Aversion), Exoplanet Biosignatures (Spectroscopy).
+- **Logic:** Nuanced tone detection, identification of logical fallacies, and scientific data interpretation.
+
 ---
 
 ## [Section: Decision Making] - 2025 Standard (18 Qs / 18.5 Mins)
