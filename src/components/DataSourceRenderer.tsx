@@ -23,7 +23,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     });
 
     if (scenario) {
-      activeData = scenario.data;
+      activeData = scenario.data || scenario;
       activeType = scenario.type;
       activeTitle = scenario.title || '';
       activeContext = scenario.context || '';
@@ -322,13 +322,16 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
   }
 
   if (activeType === 'TEXT' || activeType === 'SCENARIO') {
+    const textContent = activeData?.text || activeContext || (typeof activeData === 'string' ? activeData : '');
     return (
       <div className="p-8 prose prose-slate max-w-none flex flex-col h-full bg-white">
         {activeTitle && <h4 className="font-black text-[#004a99] text-xs uppercase mb-6 tracking-widest">{activeTitle}</h4>}
         <div className="space-y-4 text-slate-700 leading-relaxed text-sm font-medium">
-          {(activeData.text || activeContext || activeData).split('\n\n').map((para: string, i: number) => (
+          {textContent ? textContent.split('\n\n').map((para: string, i: number) => (
             <p key={i}>{para}</p>
-          ))}
+          )) : (
+            <p className="text-slate-400 italic">No scenario text available.</p>
+          )}
         </div>
       </div>
     );
