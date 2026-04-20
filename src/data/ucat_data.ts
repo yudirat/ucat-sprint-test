@@ -1706,9 +1706,6 @@ export const ucatSprintTests: UCATSet[] = [
         explanation: "Energy available = 80MWh. Price = $120. Revenue = 80 * 120 = $9,600."
       }
     ]
-  }
-      }
-    ]
   },
   {
     setId: 110,
