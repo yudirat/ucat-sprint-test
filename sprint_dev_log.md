@@ -167,7 +167,15 @@ This log tracks the logic, variables, and question mapping for all standardized 
 
 ---
 
-## [Section: Situational Judgement] - 2025 Standard (24 Qs / 13 Mins)
+## [Section: Decision Making] - Elite Tier (15 Qs / 15.5 Mins)
+
+### Sprint ID: 114 (DM Elite Sprint 1)
+**Questions 257-271**
+- **Section 1 (Syllogisms):** Protocol X/Standard Y (Undistributed middle), Class 3/Nexus-9 (Specific vs General), Ward A/Advanced Triage (Contrapositive).
+- **Section 2 (Logic Puzzle):** Researcher Committee (5 researchers, 5 studies, 5 slots). Grid logic required.
+- **Section 3 (Arguments):** Rural placement mandates, AI authority in radiology, pharmaceutical patents.
+- **Section 4 (Venn):** Hospital Staffing Audit (240 staff, 3 categories). Set theory calculations.
+- **Section 5 (Probability):** Rare Mutation Screening. Base rate fallacy, Bayes' theorem applications.
 
 ### Sprint ID: 107 (SJT Sprint A)
 **Questions 109-132**

@@ -8,8 +8,8 @@ export type { UCATSet, Question };
 
 /**
  * DATA INTEGRITY POLICY:
- * 1. SET IDs: Always use the next available integer (Current Max: 113).
- * 2. QUESTION IDs: Always use the next available integer (Current Max: 256).
+ * 1. SET IDs: Always use the next available integer (Current Max: 114).
+ * 2. QUESTION IDs: Always use the next available integer (Current Max: 271).
  * 3. NEVER reuse IDs even if a set is deleted, to ensure stable navigation and review links.
  */
 

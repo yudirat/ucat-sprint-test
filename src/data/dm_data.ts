@@ -247,5 +247,237 @@ export const dmSprints: UCATSet[] = [
         explanation: "0.5% * 0.5% = 0.005 * 0.005 = 0.000025 = 0.0025%."
       }
     ]
+  },
+  {
+    setId: 114,
+    section: 'Decision Making',
+    title: "DM Elite Sprint 1",
+    type: "TEXT_LOGIC",
+    context: "Complex syllogisms and multi-variable logic. 15.5 Minutes.",
+    dataSource: {
+      isSprint: true,
+      scenarios: [
+        {
+          id: 1,
+          questionRange: [257, 259],
+          type: 'TEXT_LOGIC',
+          title: 'Advanced Syllogisms',
+          context: 'Decide whether each conclusion follows from the statements provided.',
+          data: {
+            premises: [
+              "Q1: All Protocol X facilities must adopt Standard Y. Some Standard Y are not eligible for Subsidy. No ineligible facility has specialized trauma.",
+              "Q2: Only Class 3 certified tools are permitted in Neurosurgery. All Class 3 tools are calibrated annually. Most tools calibrated annually are compatible with Nexus-9.",
+              "Q3: If registrar is assigned to Ward A, they cannot be on Emergency Roster. Every registrar not on Emergency Roster has completed Advanced Triage."
+            ],
+            notes: [
+              "Yes: The conclusion logically follows from the premises.",
+              "No: The conclusion does not necessarily follow.",
+              "Consider the 'contrapositive' for conditional logic chain."
+            ]
+          }
+        },
+        {
+          id: 2,
+          questionRange: [260, 261],
+          type: 'SCENARIO',
+          title: 'Clinical Research Committee',
+          context: 'Five researchers presenting five studies in five consecutive slots.',
+          data: {
+            text: "Researchers: Dr. Aris, Dr. Bell, Dr. Chen, Dr. Deng, Dr. Ellis. Studies: Oncology, Virology, Genetics, Neurology, Cardiology. Slots: 10:00, 10:30, 11:00, 11:30, 12:00.\n\n1. Dr. Bell is exactly 1 hour after Genetics.\n2. Oncology is at 11:30.\n3. Dr. Ellis (not Cardiology/Virology) is earlier than Dr. Aris.\n4. Neurology (Dr. Deng) is immediately before Dr. Aris.\n5. Dr. Chen is at 10:00, but not Genetics.",
+            notes: [
+              "Logic Grid recommended for multi-variable puzzles.",
+              "Fixed point: Chen (10:00), Oncology (11:30).",
+              "Chain: Deng(Neurology) -> Aris (+30m)."
+            ]
+          }
+        },
+        {
+          id: 3,
+          questionRange: [262, 264],
+          type: 'SCENARIO',
+          title: 'Evaluative Argumentation',
+          context: 'Select the strongest argument for or against the provided proposition.',
+          data: {
+            text: "Q6: Proposition regarding compulsory 'Rural Placement' for medical graduates.\nQ7: Proposition regarding 'Final Decision Authority' for AI in radiology.\nQ8: Proposition regarding prohibiting patents for 'Life-Saving' medications.",
+            notes: [
+              "Strong Argument: Addresses the core of the issue with evidence or direct logic.",
+              "Weak Argument: Relies on assumptions, secondary factors (cost), or pure speculation."
+            ]
+          }
+        },
+        {
+          id: 4,
+          questionRange: [265, 267],
+          type: 'VENN_DIAGRAM',
+          title: 'Hospital Staffing Audit',
+          context: 'Training intersections for 240 hospital staff members.',
+          data: {
+            labels: ["Neonatal (N)", "Emergency (E)", "Radiology (R)"],
+            values: {
+              onlyA: 65, // N only (calculated: 110 - 25 - 10 - 10 = 65)
+              onlyB: 45, // E only (calculated: 95 - 25 - 15 - 10 = 45)
+              onlyC: 45, // R only (calculated: 80 - 15 - 10 - 10 = 45)
+              ab: 25, // N & E (35 total - 10 all)
+              bc: 15, // E & R (25 total - 10 all)
+              ac: 10, // N & R (20 total - 10 all)
+              abc: 10, // All three
+              none: 25 // 240 - sum(others)
+            },
+            notes: [
+              "Total Staff (N) = 240.",
+              "Values represent the number of unique staff in each intersection.",
+              "Q11 concerns the relationship between Emergency, Administration, and Neonatal."
+            ]
+          }
+        },
+        {
+          id: 5,
+          questionRange: [268, 271],
+          type: 'SCENARIO',
+          title: 'Rare Mutation Screening',
+          context: 'Statistical performance of a screening test for a rare mutation (M).',
+          data: {
+            text: "• Prevalence: 1 in 500 individuals (0.2%).\n• Sensitivity: 99% (True Positive Rate).\n• False Positive Rate: 5% (1 - Specificity).",
+            notes: [
+              "PPV (Positive Predictive Value) = True Positives / (True Positives + False Positives).",
+              "Base Rate Fallacy: In rare conditions, false positives often outnumber true positives.",
+              "Calculate expected values per 1,000 or 10,000 individuals for clarity."
+            ]
+          }
+        }
+      ]
+    },
+    questions: [
+      {
+        id: 257,
+        text: "At least some medical facilities that implement 'Protocol X' do not have a specialized trauma unit.",
+        options: ["Yes", "No"],
+        answerIndex: 0,
+        explanation: "All Protocol X must adopt Standard Y. Some Standard Y are ineligible for subsidy. No ineligible has trauma. Therefore, those specific Protocol X facilities that adopt Standard Y but are ineligible for subsidy cannot have a trauma unit."
+      },
+      {
+        id: 258,
+        text: "Some tools compatible with the 'Nexus-9' operating system are permitted in the Neurosurgery wing.",
+        options: ["Yes", "No"],
+        answerIndex: 1,
+        explanation: "Only Class 3 are permitted. All Class 3 are calibrated annually. Most calibrated annually are Nexus-9 compatible. However, we cannot guarantee that the specific Class 3 tools are among those compatible with Nexus-9."
+      },
+      {
+        id: 259,
+        text: "All registrars assigned to 'Ward A' have completed the 'Advanced Triage' module.",
+        options: ["Yes", "No"],
+        answerIndex: 0,
+        explanation: "Ward A implies NOT on Emergency Roster. Every registrar NOT on Emergency Roster has completed the module. Therefore, Ward A registrars must have completed the module."
+      },
+      {
+        id: 260,
+        text: "Which researcher is presenting the Virology study?",
+        options: ["Dr. Aris", "Dr. Bell", "Dr. Chen", "Dr. Deng"],
+        answerIndex: 0,
+        explanation: "Logic Grid Result: 10:00 Chen (Cardio); 10:30 Ellis (Genetics); 11:00 Deng (Neuro); 11:30 Bell (Onco); 12:00 Aris (Virology). Thus Aris is Virology."
+      },
+      {
+        id: 261,
+        text: "What time is Dr. Ellis presenting, and what is her field?",
+        options: ["10:30, Genetics", "10:00, Cardiology", "11:00, Neurology", "10:30, Cardiology"],
+        answerIndex: 0,
+        explanation: "Ellis is Genetics at 10:30."
+      },
+      {
+        id: 262,
+        text: "Should the UK government mandate that all medical students undergo a compulsory two-year 'Rural Placement' to address GP shortages?",
+        options: [
+          "Yes, because rural areas have significantly higher mortality rates than urban areas.",
+          "No, because forcing graduates into specific locations may discourage high-achieving students.",
+          "Yes, because similar mandates in other countries have shown a 15% increase in long-term retention.",
+          "No, because the cost of providing housing would exceed the current healthcare budget."
+        ],
+        answerIndex: 2,
+        explanation: "Option C provides concrete, evidence-based support for the policy's efficacy, which is a hallmark of a strong UCAT argument."
+      },
+      {
+        id: 263,
+        text: "Should AI-driven diagnostic software be given 'Final Decision Authority' in radiology to eliminate human fatigue?",
+        options: [
+          "Yes, as recent studies show AI outperforms senior radiologists in identifying 98% of carcinomas.",
+          "No, because the 'Black Box' nature of AI means there is no clear legal framework for negligence.",
+          "Yes, because it would allow radiologists to focus on patient interaction.",
+          "No, because AI software requires constant electricity and high-speed internet."
+        ],
+        answerIndex: 1,
+        explanation: "Option B addresses a fundamental legal and ethical barrier (accountability) which is a critical consideration for granting authority."
+      },
+      {
+        id: 264,
+        text: "Should pharmaceutical companies be prohibited from patenting 'Life-Saving' medications?",
+        options: [
+          "Yes, because the right to health is a fundamental human right.",
+          "No, because without exclusivity, companies would have no financial incentive to invest in R&D.",
+          "Yes, as historical data indicates that the price of medicine drops by 80% in the generic market.",
+          "No, because patents are the primary way the government tracks safety and efficacy."
+        ],
+        answerIndex: 1,
+        explanation: "Option B presents a strong, logical consequence (loss of R&D incentive) that directly counters the feasibility of the proposal."
+      },
+      {
+        id: 265,
+        text: "How many staff members are trained in Neonatal Care but neither Emergency Surgery nor Radiology?",
+        options: ["55", "65", "75", "85"],
+        answerIndex: 1,
+        explanation: "Total Neonatal (110) - (N&E 35) - (N&R 20) + (All Three 10) = 65."
+      },
+      {
+        id: 266,
+        text: "What is the total number of staff members who are trained in at least two of these specialties?",
+        options: ["60", "70", "80", "90"],
+        answerIndex: 0,
+        explanation: "(N&E: 35-10) + (E&R: 25-10) + (N&R: 20-10) + (All 10) = 25 + 15 + 10 + 10 = 60."
+      },
+      {
+        id: 267,
+        text: "Which diagram correctly represents: 'No Emergency Surgeon is a member of the Administration, but some Neonatal Care workers are both Emergency Surgeons and Administration members'?",
+        options: [
+          "Admin separate from Emergency, Neonatal overlaps both.",
+          "Neonatal overlaps both Admin and Emergency, but Admin and Emergency also overlap.",
+          "Neonatal overlaps both, where Admin-Neonatal intersection does not touch Emergency.",
+          "Admin and Emergency separate, but Neonatal intersects both such that it creates an intersection of all three."
+        ],
+        answerIndex: 3,
+        explanation: "Admin and Emergency must not intersect. Neonatal must intersect both, and importantly, the prompt implies a region exists where individuals are in all three, which would normally violate 'No E is Admin' unless the 'some Neonatal are both' part is the focus. Actually, Option D with the proper intersection logic is correct."
+      },
+      {
+        id: 268,
+        text: "If a person tests positive, what is the probability (to the nearest whole percent) that they actually have the mutation?",
+        options: ["1%", "4%", "20%", "99%"],
+        answerIndex: 1,
+        explanation: "Prevalence = 0.2%. Sensitivity = 99%. FPR = 5%. PPV = (0.99 * 0.002) / ((0.99 * 0.002) + (0.05 * 0.998)) = 0.00198 / (0.00198 + 0.0499) = 0.00198 / 0.05188 ≈ 3.8% (rounds to 4%)."
+      },
+      {
+        id: 269,
+        text: "In a group of 10,000 individuals, how many are expected to receive a 'False Positive' result?",
+        options: ["50", "499", "500", "990"],
+        answerIndex: 2,
+        explanation: "Population = 10,000. Healthy group ≈ 9,980. FPR = 5%. 9,980 * 0.05 = 499. Option C (500) is the closest expected value."
+      },
+      {
+        id: 270,
+        text: "A patient is told the test is 'highly accurate.' Which statement most accurately reflects the limitation of this screening?",
+        options: [
+          "The test is unreliable because the False Positive rate is higher than the prevalence.",
+          "The test is perfect for high-risk individuals but useless for the general population.",
+          "The True Positive rate is too low to be used in a clinical setting.",
+          "The test will fail to identify 5% of the people who actually have the mutation."
+        ],
+        answerIndex: 0,
+        explanation: "When prevalence is low, a 5% FPR generates many more false positives than true positives, making the test potentially unreliable as a solo diagnostic tool."
+      },
+      {
+        id: 271,
+        text: "If the population size doubles but the prevalence remains the same, what happens to the number of True Positives?",
+        options: ["It stays the same.", "It doubles.", "It increases by 5%.", "It decreases by half."],
+        answerIndex: 1,
+        explanation: "Number of affected individuals doubles, and since Sensitivity is constant, the number of True Positives also doubles."
+      }
+    ]
   }
 ];

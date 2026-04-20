@@ -742,8 +742,8 @@ export const vrSprints: UCATSet[] = [
         id: 238,
         text: "True, False, or Can't Tell: Digital watermarking is currently a legal requirement for all consumer electronics in 2026.",
         options: ["True", "False", "Can't Tell"],
-        answerIndex: 1,
-        explanation: "The text mentions critics of judicial reforms argue against implementing it, suggesting it is not yet mandatory."
+        answerIndex: 2,
+        explanation: "The text mentions critics of judicial reforms argue against implementing it, suggesting it is a proposal and technically feasible, but not yet confirmed as a mandatory requirement."
       },
       {
         id: 239,

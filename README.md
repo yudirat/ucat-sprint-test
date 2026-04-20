@@ -29,7 +29,7 @@ A high-performance, responsive web application for UCAT (University Clinical Apt
 | :--- | :--- | :--- | :--- |
 | **Quantitative Reasoning** | 7 (Sprint A-Elite 1) | 12.5-13 Mins | 126 |
 | **Verbal Reasoning** | 4 (Sprint A, B, C, Elite 1) | 10.5-11 Mins | 88 |
-| **Decision Making** | 1 (Sprint A) | 18.5 Mins | 18 |
+| **Decision Making** | 2 (Sprint A, Elite 1) | 15.5-18.5 Mins | 33 |
 | **Situational Judgement** | In Progress | 13 Mins | 34 |
 
 ## 🛠️ Technical Stack

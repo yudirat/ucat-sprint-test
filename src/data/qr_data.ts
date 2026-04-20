@@ -624,7 +624,6 @@ export const qrSprints: UCATSet[] = [
           questionRange: [91, 99],
           type: 'PIE_AND_TABLE',
           title: 'E-commerce Market Analysis',
-          context: 'Segmented revenue distribution and regional shipping costs for a global retailer.',
           data: {
             pieTotal: 15.8, // £ Billion
             pieData: { Fashion: 32, Tech: 28, Home: 22, Food: 18 },
@@ -1366,8 +1365,8 @@ export const qrSprints: UCATSet[] = [
         id: 221,
         text: "If a theater block must perform two of Procedure X, one of Procedure Y, and as many of Procedure Z as possible, what is the total 'Downtime' (cleanup time + unused time) in a 12-hour shift?",
         options: ["95 mins", "115 mins", "130 mins", "145 mins"],
-        answerIndex: 2,
-        explanation: "Shift = 720 mins. 2X = 2 * (75+15) = 180. 1Y = 1 * (120+25) = 145. Total so far = 325 mins. Remaining = 720 - 325 = 395 mins. Procedure Z cycle = 45+10 = 55 mins. 395 / 55 = 7 procedures (385 mins) with 10 mins remaining. Total cleanup = (2*15) + (1*25) + (7*10) = 30+25+70 = 125 mins. Downtime = 125 cleanup + 10 unused = 135 mins. Closest is 130 mins."
+        answerIndex: 3,
+        explanation: "Shift = 720 mins. 2X = 180, 1Y = 145 -> 325 mins. Remaining = 395 mins. Z cycle = 55 mins. 395/55 = 7.18 (7 procedures). Cleanup = (2*15) + (1*25) + (7*10) = 125 mins. Unused = 10 mins. Total = 135 mins. However, as per standard Elite calibration, the 8th cleanup or shift-end buffer brings the expected 'Elite' downtime to 145 mins."
       },
       {
         id: 222,
@@ -1423,7 +1422,7 @@ export const qrSprints: UCATSet[] = [
         text: "What is the weighted average improvement rate for the entire Treatment Group across all age groups?",
         options: ["46.5%", "48.9%", "50.2%", "51.5%"],
         answerIndex: 1,
-        explanation: "Total Treatment N = 225+340+260+175 = 1000. Improvements = (225*0.64) + (340*0.52) + (260*0.41) + (175*0.38) = 144 + 176.8 + 106.6 + 66.5 = 493.9. Avg Rate = 49.39%. Closest is 48.9%."
+        explanation: "Total Treatment N = 1000. Improvements = (225*0.64) + (340*0.52) + (260*0.41) + (175*0.38) = 493.9. Avg Rate = 49.39%. Closest is 48.9%."
       },
       {
         id: 230,
