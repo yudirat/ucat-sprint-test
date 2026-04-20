@@ -23,13 +23,11 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Alt + C to toggle calculator
       if (e.altKey && e.key.toLowerCase() === 'c') {
         e.preventDefault()
         setShowCalculator(prev => !prev)
       }
     }
-
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
@@ -51,7 +49,6 @@ function App() {
     setCurrentQuestionIndex(0)
     setUserAnswers({})
     setFlaggedQuestions({})
-    // 2.5 minutes per set as a rule of thumb for sprint
     setTimeLeft(set.questions.length * 40) 
     setView('test')
     setIsTestFinished(false)
@@ -64,28 +61,22 @@ function App() {
   }
 
   const handleAnswerSelect = (optionIndex: number, partIndex?: number) => {
-    if (!currentQuestion) return
-    
-    if (currentQuestion.type === 'syllogism' && partIndex !== undefined) {
-      const currentParts = (userAnswers[currentQuestion.id] as number[]) || [null, null, null, null, null]
-      const newParts = [...currentParts]
-      newParts[partIndex] = optionIndex
-      setUserAnswers({
-        ...userAnswers,
-        [currentQuestion.id]: newParts
-      })
-    } else {
-      setUserAnswers({
-        ...userAnswers,
-        [currentQuestion.id]: optionIndex
-      })
+    if (selectedSet && currentQuestion) {
+      if (currentQuestion.type === 'syllogism' && partIndex !== undefined) {
+        const currentParts = (userAnswers[currentQuestion.id] as number[]) || Array(currentQuestion.multiPartLabels?.length).fill(-1)
+        const newParts = [...currentParts]
+        newParts[partIndex] = optionIndex
+        setUserAnswers({
+          ...userAnswers,
+          [currentQuestion.id]: newParts
+        })
+      } else {
+        setUserAnswers({
+          ...userAnswers,
+          [currentQuestion.id]: optionIndex
+        })
+      }
     }
-  }
-
-  const handleFinishTest = () => {
-    setView('review')
-    setIsTestFinished(true)
-    setShowNavigator(false)
   }
 
   const calculateScore = (set: UCATSet) => {
@@ -132,6 +123,12 @@ function App() {
     }))
   }
 
+  const handleFinishTest = () => {
+    setView('review')
+    setIsTestFinished(true)
+    setShowNavigator(false)
+  }
+
   if (view === 'selection') {
     const sections = Array.from(new Set(ucatSprintTests.map(s => s.section)))
 
@@ -158,9 +155,11 @@ function App() {
                         {set.questions.length} ITEMS
                       </div>
                       <h3 className="text-lg font-bold text-slate-800 group-hover:text-[#004a99]">{set.title}</h3>
-                      <p className="text-sm text-slate-500 mt-1 line-clamp-1">{set.context}</p>
-                      <div className="mt-4 flex items-center gap-2 text-[#004a99] font-black text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                        Start Session →
+                      <p className="text-sm text-slate-500 mt-1 line-clamp-2">{set.context}</p>
+                      <div className="mt-4 flex items-center gap-2">
+                        <span className="px-2 py-0.5 bg-slate-100 rounded text-[10px] font-black text-slate-400 group-hover:bg-[#eef6ff] group-hover:text-[#004a99] transition-colors uppercase tracking-widest">
+                          {set.type.replace('_', ' ')}
+                        </span>
                       </div>
                     </button>
                   ))}
@@ -178,73 +177,60 @@ function App() {
     const totalMax = maxScore(selectedSet)
 
     return (
-      <div className="min-h-screen bg-slate-100 p-4 md:p-8 font-sans">
-        <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden border border-slate-200">
-          <div className="bg-[#004a99] text-white p-6 text-center relative">
-            <button 
-              onClick={() => setView('selection')}
-              className="absolute left-6 top-6 text-white/80 hover:text-white flex items-center gap-1 text-sm font-bold transition-colors"
-            >
-              ← Home
-            </button>
-            <h2 className="text-2xl font-bold">{selectedSet.title} - Results</h2>
-            <div className="mt-4 inline-block bg-white text-[#004a99] px-6 py-2 rounded-full font-bold text-xl">
-              Score: {score} / {totalMax}
+      <div className="min-h-screen bg-[#f3f4f6] p-4 md:p-8 font-sans">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+            <div className="bg-[#004a99] p-8 text-white text-center space-y-4">
+              <h2 className="text-sm font-black uppercase tracking-[0.3em] opacity-80">Practice Results</h2>
+              <div className="text-7xl font-black tracking-tighter tabular-nums">
+                {score}<span className="text-2xl opacity-40 mx-2">/</span>{totalMax}
+              </div>
+              <p className="text-lg font-medium opacity-90">{selectedSet.title}</p>
             </div>
-          </div>
-          
-          <div className="p-6 space-y-6">
-            {selectedSet.questions.map((q) => {
-              const answer = userAnswers[q.id]
-              const isCorrect = q.type === 'syllogism' 
-                ? (answer as number[] || []).every((val, idx) => val === q.multiPartCorrect?.[idx])
-                : answer === q.answerIndex
-              
-              const partial = q.type === 'syllogism' && !isCorrect && (answer as number[] || []).reduce((acc, val, idx) => acc + (val === q.multiPartCorrect?.[idx] ? 1 : 0), 0) === 4
+            
+            <div className="p-8">
+              <h3 className="text-xl font-black text-slate-800 mb-6 uppercase tracking-tight border-b-2 border-slate-100 pb-2">Question Review</h3>
+              <div className="space-y-6">
+                {selectedSet.questions.map((q) => {
+                  const answer = userAnswers[q.id]
+                  let isCorrect = false
+                  if (q.type === 'syllogism') {
+                    const correctParts = (answer as number[])?.reduce((count, val, idx) => count + (val === q.multiPartCorrect?.[idx] ? 1 : 0), 0) || 0
+                    isCorrect = correctParts === 5
+                  } else {
+                    isCorrect = answer === q.answerIndex
+                  }
 
-              return (
-                <div key={q.id} className={`p-4 rounded-lg border-l-4 ${
-                  isCorrect ? 'bg-green-50 border-green-500' : (partial ? 'bg-yellow-50 border-yellow-500' : 'bg-red-50 border-red-500')
-                }`}>
-                  <p className="font-bold text-slate-800 mb-2">Q: {q.text}</p>
-                  
-                  {q.type === 'syllogism' ? (
-                    <div className="space-y-2 text-xs">
-                      {q.multiPartLabels?.map((label, idx) => (
-                        <div key={idx} className="flex justify-between border-b border-slate-200 pb-1">
-                          <span>{label}</span>
-                          <span className="font-bold">
-                            User: {answer?.[idx] === 1 ? 'YES' : (answer?.[idx] === 0 ? 'NO' : 'Skipped')} | Correct: {q.multiPartCorrect?.[idx] === 1 ? 'YES' : 'NO'}
-                          </span>
-                        </div>
-                      ))}
+                  return (
+                    <div key={q.id} className={`p-6 rounded-xl border-l-4 transition-all shadow-sm ${
+                      isCorrect ? 'bg-emerald-50/50 border-emerald-500' : 'bg-rose-50/50 border-rose-500'
+                    }`}>
+                      <div className="flex justify-between items-start mb-4">
+                        <span className="font-black text-xs uppercase tracking-widest text-slate-400">Question {selectedSet.questions.indexOf(q) + 1}</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest ${
+                          isCorrect ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'
+                        }`}>
+                          {isCorrect ? 'Correct' : 'Incorrect'}
+                        </span>
+                      </div>
+                      <p className="font-bold text-slate-800 mb-4">{q.text}</p>
+                      <div className="bg-white/60 p-4 rounded-lg border border-slate-200/50">
+                        <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Explanation</p>
+                        <p className="text-sm text-slate-600 leading-relaxed italic">{q.explanation}</p>
+                      </div>
                     </div>
-                  ) : (
-                    <div className="space-y-1 text-sm">
-                      <p className={isCorrect ? "text-green-700" : "text-red-700"}>
-                        <strong>Your Answer:</strong> {q.options[answer] || "Skipped"}
-                      </p>
-                      {!isCorrect && (
-                        <p className="text-green-700 font-bold">
-                          <strong>Correct:</strong> {q.options[q.answerIndex]}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                  <div className="mt-3 p-3 bg-white/50 rounded text-xs text-slate-600 italic border border-slate-200">
-                    {q.explanation}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          <div className="bg-slate-50 p-6 text-center border-t">
-            <button 
-              onClick={() => setView('selection')}
-              className="bg-[#004a99] hover:bg-[#003366] text-white px-8 py-3 rounded font-bold transition-all"
-            >
-              Back to Selection
-            </button>
+                  )
+                })}
+              </div>
+            </div>
+            <div className="bg-slate-50 p-6 text-center border-t">
+              <button 
+                onClick={() => setView('selection')}
+                className="bg-[#004a99] hover:bg-[#003366] text-white px-8 py-3 rounded font-bold transition-all"
+              >
+                Back to Selection
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -298,87 +284,86 @@ function App() {
         </header>
 
         <div className="bg-[#f0f0f0] border-b border-slate-300 h-10 flex items-center justify-between px-4 shrink-0 shadow-sm">
-          <div className="flex items-center gap-4 text-xs font-bold text-slate-600">
-            <span>Item {currentQuestionIndex + 1} of {totalQuestionCount}</span>
-            <div className="h-4 w-px bg-slate-300"></div>
-            <button 
-              onClick={toggleFlag}
-              className={`flex items-center gap-1 px-2 py-1 rounded transition-colors ${flaggedQuestions[currentQuestion.id] ? 'bg-yellow-100 text-yellow-700' : 'hover:bg-slate-200'}`}
-            >
-              <span className="text-base">{flaggedQuestions[currentQuestion.id] ? '🚩' : '🏳️'}</span>
-              FLAG FOR REVIEW
-            </button>
+          <div className="flex gap-4">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-tighter">
+              Question <span className="text-slate-800 text-sm">{currentQuestionIndex + 1}</span> of <span className="text-slate-800 text-sm">{totalQuestionCount}</span>
+            </span>
           </div>
+          <button 
+            onClick={toggleFlag}
+            className={`flex items-center gap-2 px-4 py-1 rounded text-xs font-black uppercase tracking-widest transition-all ${
+              flaggedQuestions[currentQuestion.id] 
+                ? 'bg-orange-500 text-white shadow-inner' 
+                : 'text-slate-400 hover:bg-slate-200'
+            }`}
+          >
+            <svg className="w-3 h-3" fill={flaggedQuestions[currentQuestion.id] ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-1 6 1 1H6.5l-1-1H3v4z" />
+            </svg>
+            {flaggedQuestions[currentQuestion.id] ? 'Flagged' : 'Flag'}
+          </button>
         </div>
 
-        <main className="flex-1 flex flex-col md:flex-row overflow-hidden relative">
-          {showCalculator && (
-            <Draggable handle=".calculator-handle">
-              <div className="absolute top-10 right-10 z-[100] cursor-move active:cursor-grabbing">
-                <div className="calculator-handle bg-slate-800 text-white text-[10px] px-2 py-1 rounded-t-lg font-bold flex justify-between items-center">
-                  <span>UCAT CALCULATOR</span>
-                  <button onClick={() => setShowCalculator(false)} className="hover:text-red-400">✕</button>
-                </div>
-                <Calculator />
-              </div>
-            </Draggable>
-          )}
-
-          {showNavigator && (
-            <div className="absolute inset-0 bg-black/50 z-[90] flex items-center justify-center p-4">
-              <div className="bg-white w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
-                <div className="bg-[#004a99] text-white p-4 font-bold flex justify-between items-center">
-                  <span>Navigator Summary</span>
-                  <button onClick={() => setShowNavigator(false)} className="hover:opacity-70 font-black">CLOSE</button>
-                </div>
-                <div className="overflow-y-auto p-4 grid grid-cols-4 md:grid-cols-8 gap-2">
-                  {selectedSet.questions.map((q, idx) => (
-                    <button
-                      key={q.id}
-                      onClick={() => { setCurrentQuestionIndex(idx); setShowNavigator(false); }}
-                      className={`h-12 border rounded flex flex-col items-center justify-center transition-colors ${
-                        currentQuestionIndex === idx ? 'border-[#004a99] bg-blue-50 ring-2 ring-[#004a99]' : 
-                        userAnswers[q.id] !== undefined ? 'bg-slate-100 border-slate-300' : 'bg-white border-slate-200 hover:border-[#004a99]'
-                      }`}
-                    >
-                      <span className="text-xs font-bold">{idx + 1}</span>
-                      <div className="flex gap-1">
-                        {flaggedQuestions[q.id] && <span className="text-[10px]">🚩</span>}
-                        {userAnswers[q.id] !== undefined && <span className="text-[10px] text-green-600">✓</span>}
-                      </div>
-                    </button>
-                  ))}
-                </div>
-                <div className="p-4 bg-slate-50 border-t flex justify-center">
-                  <button 
-                    onClick={handleFinishTest}
-                    className="bg-[#004a99] text-white px-8 py-2 rounded font-bold hover:bg-[#003366]"
-                  >
-                    End Practice and See Score
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="flex-1 p-8 overflow-auto border-r border-slate-300 bg-white">
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="bg-slate-50 p-4 border border-slate-200 rounded-lg">
-                <h2 className="text-xl font-bold text-[#004a99] mb-2 uppercase tracking-wide">{selectedSet.title}</h2>
-                <p className="text-slate-700 leading-relaxed text-sm">{selectedSet.context}</p>
-              </div>
-              
-              <div className="bg-white rounded border border-slate-200 shadow-sm overflow-hidden">
-                <DataSourceRenderer 
-                  type={selectedSet.type} 
-                  dataSource={selectedSet.dataSource} 
-                  currentQuestionId={currentQuestion.id}
-                />
-              </div>
-            </div>
+        <main className="flex-1 flex overflow-hidden relative">
+          {/* Stimulus Area */}
+          <div className="w-1/2 overflow-y-auto bg-slate-100/50 border-r border-slate-300 p-1 custom-scrollbar">
+            <DataSourceRenderer 
+              type={selectedSet.type} 
+              dataSource={selectedSet.dataSource} 
+              currentQuestionId={currentQuestion.id}
+            />
           </div>
 
-          <div className="w-full md:w-[480px] bg-[#f9f9f9] border-l border-slate-300 p-8 flex flex-col z-10 shadow-[-4px_0_15px_rgba(0,0,0,0.02)]">
+          {/* Question Area */}
+          <div className="w-1/2 overflow-y-auto p-12 bg-white relative custom-scrollbar">
+            {/* Calculator layer */}
+            {showCalculator && (
+              <Draggable handle=".handle" bounds="parent">
+                <div className="absolute z-50 shadow-2xl rounded-xl overflow-hidden bg-slate-800 border-2 border-slate-700 w-64 top-4 right-4">
+                  <div className="handle bg-slate-700 p-2 cursor-move flex justify-between items-center text-white text-[10px] font-black tracking-widest">
+                    <span>UCAT CALCULATOR</span>
+                    <button onClick={() => setShowCalculator(false)} className="hover:text-red-400">✕</button>
+                  </div>
+                  <Calculator />
+                </div>
+              </Draggable>
+            )}
+
+            {/* Navigator layer */}
+            {showNavigator && (
+              <Draggable handle=".handle" bounds="parent">
+                <div className="absolute z-40 shadow-2xl rounded-xl overflow-hidden bg-white border-2 border-slate-200 w-80 top-4 left-4 flex flex-col max-h-[80%]">
+                  <div className="handle bg-[#004a99] p-3 cursor-move flex justify-between items-center text-white text-xs font-black tracking-widest">
+                    <span>QUESTION NAVIGATOR</span>
+                    <button onClick={() => setShowNavigator(false)} className="hover:opacity-70 font-black">CLOSE</button>
+                  </div>
+                  <div className="overflow-y-auto p-4 grid grid-cols-4 md:grid-cols-8 gap-2">
+                    {selectedSet.questions.map((q, idx) => (
+                      <button
+                        key={q.id}
+                        onClick={() => {
+                          setCurrentQuestionIndex(idx)
+                          setShowNavigator(false)
+                        }}
+                        className={`aspect-square rounded flex items-center justify-center text-xs font-black transition-all relative ${
+                          currentQuestionIndex === idx 
+                            ? 'bg-[#004a99] text-white ring-2 ring-offset-2 ring-[#004a99]' 
+                            : userAnswers[q.id] !== undefined
+                              ? 'bg-slate-200 text-slate-600'
+                              : 'bg-white border-2 border-slate-200 text-slate-400 hover:border-[#004a99]'
+                        }`}
+                      >
+                        {idx + 1}
+                        {flaggedQuestions[q.id] && (
+                          <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-orange-500 rounded-full border-2 border-white"></div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </Draggable>
+            )}
+
             <div className="flex-1">
               <h3 className="text-lg font-bold text-slate-800 mb-8 leading-tight">
                 {currentQuestion.text}

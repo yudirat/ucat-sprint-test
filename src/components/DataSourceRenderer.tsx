@@ -321,5 +321,18 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     );
   }
 
+  if (activeType === 'TEXT' || activeType === 'SCENARIO') {
+    return (
+      <div className="p-8 prose prose-slate max-w-none flex flex-col h-full bg-white">
+        {activeTitle && <h4 className="font-black text-[#004a99] text-xs uppercase mb-6 tracking-widest">{activeTitle}</h4>}
+        <div className="space-y-4 text-slate-700 leading-relaxed text-sm font-medium">
+          {(activeData.text || activeContext || activeData).split('\n\n').map((para: string, i: number) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return <div className="p-8 text-slate-400 italic text-sm">No visualization for this type.</div>;
 };
