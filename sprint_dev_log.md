@@ -119,6 +119,16 @@ This log tracks the logic, variables, and question mapping for all standardized 
 
 ---
 
+### Sprint ID: 112 (QR Elite Sprint 1)
+**Questions 217-234**
+- **Scenario 1 (Health Infrastructure):** Per capita spend (£B/M), hospital bed ratios (per 10k).
+- **Scenario 2 (Theater Efficiency):** Bin packing logic, downtime, expected cost of failure.
+- **Scenario 3 (Pharma Logistics):** Multi-day storage costs, tiered wastage rates, profit.
+- **Scenario 4 (Trial Demographics):** Weighted improvement rates, placebo calculation, trial expansion.
+- **Scenario 5 (Diagnostic Accuracy):** False positives, Positive Predictive Value (PPV) formulas.
+
+---
+
 ## [Section: Verbal Reasoning] - 2025 Standard (22 Qs / 11 Mins)
 
 ### Sprint ID: 103 (VR Sprint A)
