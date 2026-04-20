@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# UCAT Sprint Practice - Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, responsive web application for UCAT (University Clinical Aptitude Test) sprint practice, designed to mirror the Pearson VUE testing interface.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Standardized Sprints:** 50% length mock tests (QR, VR, DM) based on 2025 UCAT standards.
+- **Pearson VUE UI:** Accurate simulation of the real test environment, including headers, timers, and navigation.
+- **Interactive Tools:**
+  - **Draggable Calculator:** Fully functional on-screen calculator.
+  - **Navigator:** Question summary and quick-jump functionality.
+  - **Flagging:** Flag questions for review just like in the real exam.
+- **Responsive Design:** Optimized for both desktop and mobile viewing.
+- **Detailed Review:** Score summaries with explanations for every question.
+- **Scoring Engine:** Supports complex UCAT scoring, including partial credit for Syllogisms and SJT.
 
-## React Compiler
+## ⌨️ Keyboard Shortcuts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Shortcut | Action |
+| :--- | :--- |
+| **Alt + C** | Toggle Calculator |
+| **Alt + N** | Next Question (Standard UCAT - *Coming Soon*) |
+| **Alt + P** | Previous Question (Standard UCAT - *Coming Soon*) |
+| **Alt + F** | Flag for Review (Standard UCAT - *Coming Soon*) |
 
-## Expanding the ESLint configuration
+## 📊 Current Sprint Availability
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Section | Sprints Ready | Timing | Items |
+| :--- | :--- | :--- | :--- |
+| **Quantitative Reasoning** | 6 (Sprint A, B, C, D, E, F) | 13 Mins | 108 |
+| **Verbal Reasoning** | 1 (Sprint A) | 11 Mins | 22 |
+| **Decision Making** | 1 (Sprint A) | 18.5 Mins | 18 |
+| **Situational Judgement** | In Progress | 13 Mins | 34 |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Technical Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Framework:** React 19 (TypeScript)
+- **Bundler:** Vite 8
+- **Styling:** Tailwind CSS 4
+- **State Management:** React Hooks
+- **Deployment:** GitHub Pages
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📖 Development Log
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Detailed logic, question mapping, and mathematical verification can be found in `sprint_dev_log.md` at the project root.

@@ -64,27 +64,27 @@ export function Calculator() {
         {display}
       </div>
       <div className="grid grid-cols-4 gap-2">
-        <button onClick={clearAll} className="col-span-3 bg-red-500 hover:bg-red-600 p-2 rounded font-bold">C</button>
-        <button onClick={() => performOperation('/')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">/</button>
+        <button type="button" onClick={clearAll} className="col-span-3 bg-red-500 hover:bg-red-600 p-2 rounded font-bold">C</button>
+        <button type="button" onClick={() => performOperation('/')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">/</button>
         
         {[7, 8, 9].map(d => (
-          <button key={d} onClick={() => inputDigit(String(d))} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">{d}</button>
+          <button type="button" key={d} onClick={() => inputDigit(String(d))} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">{d}</button>
         ))}
-        <button onClick={() => performOperation('*')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">×</button>
+        <button type="button" onClick={() => performOperation('*')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">×</button>
         
         {[4, 5, 6].map(d => (
-          <button key={d} onClick={() => inputDigit(String(d))} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">{d}</button>
+          <button type="button" key={d} onClick={() => inputDigit(String(d))} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">{d}</button>
         ))}
-        <button onClick={() => performOperation('-')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">-</button>
+        <button type="button" onClick={() => performOperation('-')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">-</button>
         
         {[1, 2, 3].map(d => (
-          <button key={d} onClick={() => inputDigit(String(d))} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">{d}</button>
+          <button type="button" key={d} onClick={() => inputDigit(String(d))} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">{d}</button>
         ))}
-        <button onClick={() => performOperation('+')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">+</button>
+        <button type="button" onClick={() => performOperation('+')} className="bg-slate-500 hover:bg-slate-600 p-2 rounded font-bold">+</button>
         
-        <button onClick={() => inputDigit('0')} className="col-span-2 bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">0</button>
-        <button onClick={inputDot} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">.</button>
-        <button onClick={() => performOperation('=')} className="bg-blue-500 hover:bg-blue-600 p-2 rounded font-bold">=</button>
+        <button type="button" onClick={() => inputDigit('0')} className="col-span-2 bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">0</button>
+        <button type="button" onClick={inputDot} className="bg-slate-600 hover:bg-slate-500 p-2 rounded font-bold">.</button>
+        <button type="button" onClick={() => performOperation('=')} className="bg-blue-500 hover:bg-blue-600 p-2 rounded font-bold">=</button>
       </div>
     </div>
   )

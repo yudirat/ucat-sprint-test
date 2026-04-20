@@ -22,6 +22,19 @@ function App() {
   const totalQuestionCount = selectedSet?.questions.length || 0
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Alt + C to toggle calculator
+      if (e.altKey && e.key.toLowerCase() === 'c') {
+        e.preventDefault()
+        setShowCalculator(prev => !prev)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  useEffect(() => {
     let timer: number
     if (view === 'test' && timeLeft > 0 && !isTestFinished) {
       timer = window.setInterval(() => {
@@ -252,12 +265,14 @@ function App() {
             <div className="font-bold text-lg tracking-tight">UCAT {selectedSet.section.toUpperCase()}</div>
             <div className="flex gap-2">
               <button 
+                type="button"
                 onClick={() => setShowCalculator(!showCalculator)}
                 className={`px-3 py-1 rounded text-xs font-bold transition-colors border border-white/30 cursor-pointer ${showCalculator ? 'bg-white text-[#004a99]' : 'hover:bg-white/10'}`}
               >
                 CALCULATOR
               </button>
               <button 
+                type="button"
                 onClick={() => setShowNavigator(!showNavigator)}
                 className={`px-3 py-1 rounded text-xs font-bold transition-colors border border-white/30 ${showNavigator ? 'bg-white text-[#004a99]' : 'hover:bg-white/10'}`}
               >

@@ -1,3 +1,10 @@
+/**
+ * DATA INTEGRITY POLICY:
+ * 1. SET IDs: Always use the next available integer (Current Max: 109).
+ * 2. QUESTION IDs: Always use the next available integer (Current Max: 168).
+ * 3. NEVER reuse IDs even if a set is deleted, to ensure stable navigation and review links.
+ */
+
 export interface Question {
   id: number;
   text: string;
@@ -24,9 +31,9 @@ export const ucatSprintTests: UCATSet[] = [
   {
     setId: 101,
     section: 'Quantitative Reasoning',
-    title: "QR Sprint A (50% Length)",
+    title: "QR Sprint A",
     type: "TABLE",
-    context: "This sprint contains 18 questions across 4 different data scenarios. You have 13 minutes.",
+    context: "Fundamental data interpretation for transport and energy. 13 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
@@ -213,9 +220,9 @@ export const ucatSprintTests: UCATSet[] = [
   {
     setId: 102,
     section: 'Quantitative Reasoning',
-    title: "QR Sprint B (50% Length)",
+    title: "QR Sprint B",
     type: "MULTI_TABLE",
-    context: "Second 18-question sprint for QR. Focused on currency and multi-data sets. 13 Minutes.",
+    context: "Currency conversion and resource efficiency. 13 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
@@ -251,7 +258,7 @@ export const ucatSprintTests: UCATSet[] = [
       ]
     },
     questions: [
-       {
+      {
         id: 19,
         text: "Annual maintenance for MRI in GBP?",
         options: ["£86,700", "£102,000", "£72,250", "£120,000", "£91,500"],
@@ -382,9 +389,9 @@ export const ucatSprintTests: UCATSet[] = [
   {
     setId: 103,
     section: 'Verbal Reasoning',
-    title: "VR Sprint A (50% Length)",
+    title: "VR Sprint A",
     type: "PASSAGE",
-    context: "22 questions based on 5 reading passages. You have 11 minutes total.",
+    context: "Complex reading comprehension. 11 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
@@ -595,9 +602,9 @@ export const ucatSprintTests: UCATSet[] = [
   {
     setId: 104,
     section: 'Decision Making',
-    title: "DM Sprint A (50% Length)",
+    title: "DM Sprint A",
     type: "TEXT_LOGIC",
-    context: "18 questions testing logic, syllogisms, and Venn diagrams. 18.5 Minutes.",
+    context: "Logic puzzles and probability. 18.5 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
@@ -806,9 +813,9 @@ export const ucatSprintTests: UCATSet[] = [
   {
     setId: 105,
     section: 'Quantitative Reasoning',
-    title: "QR Sprint C (Advanced)",
+    title: "QR Sprint C",
     type: "LINE_GRAPH",
-    context: "Advanced data interpretation involving multi-axis charts and nested calculations. 13 Minutes.",
+    context: "Multi-axis chart analysis. 13 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
@@ -949,189 +956,181 @@ export const ucatSprintTests: UCATSet[] = [
     ]
   },
   {
-    setId: 109,
+    setId: 106,
     section: 'Quantitative Reasoning',
-    title: "QR Sprint D (Elite)",
-    type: "MULTI_TABLE",
-    context: "Highest difficulty QR sprint involving manufacturing waste, financial arbitrage, and VC ROI. 13 Minutes.",
+    title: "QR Sprint D",
+    type: "PIE_AND_TABLE",
+    context: "Market analysis and pharma trial metrics. 13 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
         {
           id: 1,
-          type: 'TABLE',
-          title: 'Manufacturing Waste Flow',
-          context: 'Three-stage production process for 10,000 raw units.',
+          type: 'PIE_AND_TABLE',
+          title: 'E-commerce Market Analysis',
           data: {
-            headers: ["Stage", "Failure Rate", "Sunk Cost/Unit"],
-            rows: [
-              ["Stage 1", "4%", "$10"],
-              ["Stage 2", "7%", "$25"],
-              ["Stage 3", "2%", "$40"]
+            pieTotal: 15.8, // £ Billion
+            pieData: { Fashion: 32, Tech: 28, Home: 22, Food: 18 },
+            renewableTable: [ 
+              ["UK", "45%", 5.50], // Market, Region Share, Base Shipping Cost (£)
+              ["EU", "35%", 12.80],
+              ["US", "15%", 25.00],
+              ["RoW", "5%", 45.00]
             ]
           }
         },
         {
           id: 2,
-          type: 'MULTI_TABLE',
-          title: 'Financial Arbitrage',
-          context: 'Currency exchange rates for a circular trade (Base: 1000 GBP).',
+          type: 'TABLE',
+          title: 'Pharmaceutical Trial Metrics',
+          context: 'Efficacy data across different patient demographics.',
           data: {
-            rates: [
-              ["GBP to USD", 1.25],
-              ["USD to EUR", 0.92],
-              ["EUR to GBP", 0.88]
+            headers: ["Drug", "Success Rate (%)", "Sample Size", "Cost/Patient (£)", "Trial Duration (mo)"],
+            rows: [
+              ["Vax-A", 88.5, 12500, 450, 18],
+              ["Vax-B", 92.1, 8400, 680, 24],
+              ["Vax-C", 76.8, 22000, 320, 12],
+              ["Vax-D", 84.2, 15000, 510, 15]
             ]
-          }
-        },
-        {
-          id: 3,
-          type: 'PIE_CHART',
-          title: 'VC Portfolio ROI',
-          context: 'Allocation and Expected Performance of a $100M Fund.',
-          data: {
-            allocation: { Fintech: 35, Healthtech: 25, AI: 30, GreenEnergy: 10 },
-            multipliers: { Fintech: 12, Healthtech: 8, AI: 50, GreenEnergy: 5 },
-            successRate: { Fintech: 0.2, Healthtech: 0.33, AI: 0.1, GreenEnergy: 0.5 }
           }
         }
       ]
     },
     questions: [
       {
-        id: 159,
-        text: "How many units successfully pass through all three stages?",
-        options: ["8,749", "9,000", "8,500", "8,820", "9,150"],
+        id: 91,
+        text: "What is the total revenue (£m) generated by the Tech segment?",
+        options: ["£4,424m", "£4,000m", "£3,850m", "£4,200m", "£4,500m"],
         answerIndex: 0,
-        explanation: "10,000 * 0.96 * 0.93 * 0.98 = 8,749.44 ≈ 8,749."
+        explanation: "28% of £15.8bn = 0.28 * 15800m = £4,424m."
       },
       {
-        id: 160,
-        text: "What is the total sunk cost from units failing at Stage 1?",
-        options: ["$4,000", "$400", "$40,000", "$1,000", "$10,000"],
+        id: 92,
+        text: "How much more revenue (£m) does Fashion generate compared to Food?",
+        options: ["£2,212m", "£2,500m", "£2,000m", "£1,850m", "£2,400m"],
         answerIndex: 0,
-        explanation: "10,000 * 0.04 * $10 = 400 * 10 = $4,000."
+        explanation: "(32% - 18%) = 14%. 14% of £15.8bn = £2,212m."
       },
       {
-        id: 161,
-        text: "How many units fail at Stage 2?",
-        options: ["672", "700", "644", "725", "680"],
+        id: 93,
+        text: "What is the total market value (£m) of the US region?",
+        options: ["£2,370m", "£2,100m", "£2,500m", "£2,200m", "£2,450m"],
         answerIndex: 0,
-        explanation: "9,600 units enter S2. 9,600 * 0.07 = 672 failed units."
+        explanation: "15% of £15.8bn = £2,370m."
       },
       {
-        id: 162,
-        text: "What is the total sunk cost from units failing at Stage 3?",
-        options: ["$7,142", "$8,000", "$6,500", "$5,800", "$7,500"],
+        id: 94,
+        text: "What is the average shipping cost across all four regions?",
+        options: ["£22.08", "£25.00", "£20.50", "£21.20", "£23.40"],
         answerIndex: 0,
-        explanation: "Entering S3 = 8928. Failed S3 = 8928 * 0.02 = 178.56. Sunk Cost = 178.56 * $40 = $7,142.40."
+        explanation: "(5.50 + 12.80 + 25.00 + 45.00) / 4 = £22.075 ≈ £22.08."
       },
       {
-        id: 163,
-        text: "What is the total waste cost for the entire process?",
-        options: ["$27,942", "$32,000", "$25,000", "$21,500", "$35,000"],
+        id: 95,
+        text: "If shipping costs increase by 10% for the EU and US, what is the new average shipping cost?",
+        options: ["£23.02", "£24.15", "£22.50", "£23.80", "£22.95"],
         answerIndex: 0,
-        explanation: "S1 Waste: 4000. S2 Waste: 16800. S3 Waste: 7142. Total = $27,942."
+        explanation: "New EU: 14.08, New US: 27.50. New total = 5.5 + 14.08 + 27.5 + 45 = 92.08. Avg = 92.08 / 4 = £23.02."
       },
       {
-        id: 164,
-        text: "Converting 1000 GBP to USD gives how much?",
-        options: ["$1,250", "$800", "$1,150", "$1,000", "$1,320"],
+        id: 96,
+        text: "What is the ratio of Fashion share to Tech share?",
+        options: ["8:7", "4:3", "3:2", "5:4", "9:7"],
         answerIndex: 0,
-        explanation: "1000 * 1.25 = $1,250."
+        explanation: "32 : 28 = 8 : 7."
       },
       {
-        id: 165,
-        text: "Converting the USD result (from 1000 GBP) into EUR gives how much?",
-        options: ["1,150 EUR", "1,250 EUR", "1,000 EUR", "1,100 EUR", "1,200 EUR"],
+        id: 97,
+        text: "Total revenue (£m) for the EU and RoW regions combined?",
+        options: ["£6,320m", "£6,500m", "£6,100m", "£6,800m", "£6,000m"],
         answerIndex: 0,
-        explanation: "1250 * 0.92 = 1,150 EUR."
+        explanation: "(35% + 5%) = 40%. 40% of £15.8bn = £6,320m."
       },
       {
-        id: 166,
-        text: "Converting the EUR result (from previous step) back to GBP gives how much?",
-        options: ["1,012 GBP", "1,000 GBP", "980 GBP", "1,050 GBP", "1,025 GBP"],
+        id: 98,
+        text: "If Fashion revenue falls by 25% and Tech revenue stays the same, what is the new total revenue (£bn)?",
+        options: ["£14.535bn", "£15.0bn", "£14.2bn", "£14.8bn", "£15.2bn"],
         answerIndex: 0,
-        explanation: "1150 * 0.88 = 1,012 GBP."
+        explanation: "Fashion: 0.32 * 15.8 = 5.056. Fall of 25% = 1.264. New Total = 15.8 - 1.264 = 14.536bn."
       },
       {
-        id: 167,
-        text: "What is the percentage profit from this circular trade?",
-        options: ["1.2%", "1.0%", "0.8%", "1.5%", "2.0%"],
+        id: 99,
+        text: "Which category has a value closest to £3.5bn?",
+        options: ["Home", "Tech", "Food", "Fashion", "None"],
         answerIndex: 0,
-        explanation: "(1012 - 1000) / 1000 = 0.012 = 1.2%."
+        explanation: "Home: 0.22 * 15.8 = 3.476bn. This is closest."
       },
       {
-        id: 168,
-        text: "If the EUR to GBP rate was 0.86, would the trade be profitable?",
-        options: ["No, 1.1% loss", "Yes, 0.5% profit", "No, 0.2% loss", "Equal", "Yes, 1.0% profit"],
+        id: 100,
+        text: "Total successful patients for Vax-C?",
+        options: ["16,896", "17,200", "15,500", "16,100", "18,000"],
         answerIndex: 0,
-        explanation: "1150 * 0.86 = 989 GBP. This is a loss of 11 GBP (1.1%)."
+        explanation: "22000 * 0.768 = 16,896."
       },
       {
-        id: 169,
-        text: "What is the expected value of the AI portion of the fund?",
-        options: ["$150M", "$300M", "$100M", "$50M", "$450M"],
+        id: 101,
+        text: "What is the total cost (£) of the Vax-A trial?",
+        options: ["£5,625,000", "£5,000,000", "£6,200,000", "£4,850,000", "£5,500,000"],
         answerIndex: 0,
-        explanation: "Invested: $30M (30%). Expected = $30M * 50x * 0.1 = $150M."
+        explanation: "12500 * 450 = £5,625,000."
       },
       {
-        id: 170,
-        text: "What is the expected value of the Fintech portion?",
-        options: ["$84M", "$70M", "$100M", "$120M", "$95M"],
+        id: 102,
+        text: "Which drug has the highest total trial cost?",
+        options: ["Vax-D", "Vax-B", "Vax-C", "Vax-A", "Vax-A and Vax-D"],
         answerIndex: 0,
-        explanation: "Invested: $35M. Expected = $35M * 12x * 0.2 = $84M."
+        explanation: "A: 5.625m, B: 5.712m, C: 7.04m, D: 7.65m. Vax-D is highest."
       },
       {
-        id: 171,
-        text: "What is the expected value of the Green Energy portion?",
-        options: ["$25M", "$50M", "$10M", "$35M", "$15M"],
+        id: 103,
+        text: "Average trial cost per month for Vax-B?",
+        options: ["£238,000", "£250,000", "£220,000", "£280,000", "£215,000"],
         answerIndex: 0,
-        explanation: "Invested: $10M. Expected = $10M * 5x * 0.5 = $25M."
+        explanation: "(8400 * 680) / 24 = 5,712,000 / 24 = £238,000."
       },
       {
-        id: 172,
-        text: "What is the expected total value of the $100M fund?",
-        options: ["$325M", "$400M", "$250M", "$300M", "$350M"],
+        id: 104,
+        text: "What is the success rate ratio of Vax-B to Vax-C?",
+        options: ["1.20", "1.15", "1.25", "1.10", "1.30"],
         answerIndex: 0,
-        explanation: "AI(150) + Fintech(84) + Health(66) + Green(25) = $325M."
+        explanation: "92.1 / 76.8 = 1.199 ≈ 1.20."
       },
       {
-        id: 173,
-        text: "Which sector has the highest success probability?",
-        options: ["GreenEnergy", "Healthtech", "Fintech", "AI", "AI and Fintech"],
+        id: 105,
+        text: "If Vax-A sample size doubles, what is the new total successful patients?",
+        options: ["22,125", "25,000", "20,500", "21,800", "23,200"],
         answerIndex: 0,
-        explanation: "GreenEnergy (0.5) is highest."
+        explanation: "12500 * 2 * 0.885 = 22,125."
       },
       {
-        id: 174,
-        text: "What is the ratio of AI investment to Green Energy investment?",
-        options: ["3:1", "4:1", "2:1", "5:1", "10:1"],
+        id: 106,
+        text: "Which drug has the lowest cost per successful patient?",
+        options: ["Vax-C", "Vax-A", "Vax-B", "Vax-D", "Vax-A and Vax-C"],
         answerIndex: 0,
-        explanation: "30% : 10% = 3 : 1."
+        explanation: "A: 450/0.885 = 508; B: 680/0.921 = 738; C: 320/0.768 = 416; D: 510/0.842 = 605. Vax-C is lowest."
       },
       {
-        id: 175,
-        text: "If the AI success rate doubled, what would be the AI expected value?",
-        options: ["$300M", "$150M", "$450M", "$600M", "$200M"],
+        id: 107,
+        text: "Total patients across all trials?",
+        options: ["57,900", "60,000", "55,000", "58,500", "56,200"],
         answerIndex: 0,
-        explanation: "30M * 50 * 0.2 = $300M."
+        explanation: "12500 + 8400 + 22000 + 15000 = 57,900."
       },
       {
-        id: 176,
-        text: "What percentage of the total fund is invested in Healthtech?",
-        options: ["25%", "35%", "30%", "10%", "20%"],
+        id: 108,
+        text: "What is the average success rate (%) across all trials?",
+        options: ["85.4%", "86.2%", "84.8%", "87.0%", "85.9%"],
         answerIndex: 0,
-        explanation: "Given as 25%."
+        explanation: "(88.5 + 92.1 + 76.8 + 84.2) / 4 = 85.4%."
       }
     ]
   },
   {
-    setId: 108,
+    setId: 107,
     section: 'Situational Judgement',
-    title: "SJT Sprint A (50% Length)",
+    title: "SJT Sprint A",
     type: "SCENARIO",
-    context: "34 questions based on medical professionalism and ethics. 13 Minutes.",
+    context: "Ethics and professionalism. 13 Minutes.",
     dataSource: {
       isSprint: true,
       scenarios: [
@@ -1157,172 +1156,554 @@ export const ucatSprintTests: UCATSet[] = [
     },
     questions: [
       {
-        id: 135,
+        id: 109,
         text: "How appropriate is it for Sarah to: Politely remind Dr. Smith that they are in a public space.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 0,
         explanation: "Directly addressing the breach of confidentiality in a polite manner is the most effective way to stop the immediate issue."
       },
       {
-        id: 136,
+        id: 110,
         text: "How appropriate is it for Sarah to: Wait until they leave the elevator and then report Dr. Smith to the Medical School immediately.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 1,
         explanation: "Reporting is necessary, but failing to stop the immediate breach in the elevator is less ideal than intervening."
       },
       {
-        id: 137,
+        id: 111,
         text: "How appropriate is it for Sarah to: Join in the conversation to show her knowledge of the rare condition.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "This actively contributes to the breach of confidentiality and is highly unprofessional."
       },
       {
-        id: 138,
+        id: 112,
         text: "How appropriate is it for Sarah to: Ignore the situation as Dr. Smith is a senior consultant and she is just a student.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "Patient confidentiality is a collective responsibility; hierarchy does not excuse silence in the face of a breach."
       },
       {
-        id: 139,
+        id: 113,
         text: "How important is the following factor: The fact that the public in the elevator may not know the patient personally.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 3,
         explanation: "A breach of confidentiality is a breach regardless of whether the listeners know the patient; the principle is absolute."
       },
       {
-        id: 140,
+        id: 114,
         text: "How important is the following factor: Dr. Smith's seniority and reputation in the hospital.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 3,
         explanation: "Seniority does not change the ethical requirement to maintain patient confidentiality."
       },
       {
-        id: 141,
+        id: 115,
         text: "How appropriate is it for Sarah to: Mention the incident to her clinical supervisor for advice on how to handle similar situations in the future.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 0,
         explanation: "Seeking guidance on professional conduct and how to navigate hierarchy is very appropriate for a student."
       },
       {
-        id: 142,
+        id: 116,
         text: "How appropriate is it for Sarah to: Post about the incident on an anonymous forum for medical students to complain about the consultant's behavior.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "Venting on social media or forums about professional issues is inappropriate; formal channels should be used."
       },
       {
-        id: 143,
+        id: 117,
         text: "How appropriate is it to: Politely ask James if he can help with the discharge summaries as you are feeling overwhelmed.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 0,
         explanation: "Direct, professional communication is the first step in resolving teamwork issues."
       },
       {
-        id: 144,
+        id: 118,
         text: "How appropriate is it to: Do all the work yourself and then report James's laziness to the consultant at the end of the shift.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 2,
         explanation: "Reporting without first attempting to resolve the issue with the colleague is generally inappropriate unless it's a recurring pattern."
       },
       {
-        id: 145,
+        id: 119,
         text: "How appropriate is it to: Take a break yourself and leave the work unfinished until James starts helping.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "Leaving patient care tasks unfinished directly compromises patient safety."
       },
       {
-        id: 146,
+        id: 120,
         text: "How appropriate is it to: Mention to other colleagues that James is always on his phone and never helps.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "Gossiping about colleagues is unprofessional and damages team morale."
       },
       {
-        id: 147,
+        id: 121,
         text: "How important is the following factor: The urgency of the patient discharges and blood tests.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 0,
         explanation: "Patient safety and timely care are the highest priorities in a clinical setting."
       },
       {
-        id: 148,
+        id: 122,
         text: "How important is the following factor: Whether James has already completed his own assigned tasks for the day.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 2,
         explanation: "Even if he finished his tasks, clinical work is a team effort, especially when a colleague is overwhelmed, but it's less critical than the work itself."
       },
       {
-        id: 149,
+        id: 123,
         text: "How appropriate is it to: Suggest to James that you split the remaining tasks so that you can both finish on time.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 0,
         explanation: "Proposing a collaborative solution is proactive and professional."
       },
       {
-        id: 150,
+        id: 124,
         text: "How appropriate is it to: Shout at James in front of other staff so he realizes how stressed you are.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "Aggressive behavior and public confrontation are highly unprofessional."
       },
       {
-        id: 151,
+        id: 125,
         text: "How appropriate is it to: Advise your friends that filming in the hospital is inappropriate, even if patients are 'just in the background'.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 0,
         explanation: "Patients have a right to privacy, and hospitals are not playgrounds; advising peers on professional boundaries is very appropriate."
       },
       {
-        id: 152,
+        id: 126,
         text: "How appropriate is it to: Participate in the dance but make sure no patients are visible in your specific shots.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "The act itself is unprofessional in a clinical environment and still risks accidental privacy breaches."
       },
       {
-        id: 153,
+        id: 127,
         text: "How appropriate is it to: Inform the hospital's communications team or your supervisor about the students' plan.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 1,
         explanation: "Escalating is appropriate if the peers refuse to listen to advice, but trying to resolve it internally first is often preferred."
       },
       {
-        id: 154,
+        id: 128,
         text: "How appropriate is it to: Post a 'disclaimer' on the video saying the hospital does not endorse the content.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "A disclaimer does not excuse unprofessional behavior or potential privacy violations."
       },
       {
-        id: 155,
+        id: 129,
         text: "How important is the following factor: The risk of patients or their families feeling uncomfortable or disrespected.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 0,
         explanation: "Maintaining public trust and patient dignity is a core tenet of medical professionalism."
       },
       {
-        id: 156,
+        id: 130,
         text: "How important is the following factor: The students' intention to show the 'real hospital vibe' and humanize doctors.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 3,
         explanation: "Good intentions do not override professional standards and patient privacy."
       },
       {
-        id: 157,
+        id: 131,
         text: "How important is the following factor: Whether the students are filming during their lunch break or during clinical hours.",
         options: ["Very Important", "Important", "Of minor importance", "Not at all important"],
         answerIndex: 2,
         explanation: "While filming during clinical hours is worse, the location (hospital) makes it unprofessional even during breaks."
       },
       {
-        id: 158,
+        id: 132,
         text: "How appropriate is it to: Take no action as it is their personal TikTok account and not yours.",
         options: ["Very Appropriate", "Appropriate, but not ideal", "Inappropriate, but not awful", "Very Inappropriate"],
         answerIndex: 3,
         explanation: "Medical students have a duty to uphold the reputation of the profession and protect patient privacy."
+      }
+    ]
+  },
+  {
+    setId: 108,
+    section: 'Quantitative Reasoning',
+    title: "QR Sprint E",
+    type: "MULTI_TABLE",
+    context: "Strategic industrial and financial data. 13 Minutes.",
+    dataSource: {
+      isSprint: true,
+      scenarios: [
+        {
+          id: 1,
+          type: 'TABLE',
+          title: 'Aerospace Alloy Production',
+          data: {
+            headers: ["Alloy", "Cycle (min/u)", "Density (g/cm3)", "Cost ($/kg)", "Scrap %"],
+            rows: [
+              ["Titanium-64", 45, 4.43, 28.50, 8],
+              ["Aluminium-7075", 15, 2.81, 4.20, 5],
+              ["Stainless-316L", 30, 8.00, 2.10, 3]
+            ]
+          }
+        },
+        {
+          id: 2,
+          type: 'MULTI_TABLE',
+          title: 'District Health Metrics',
+          data: {
+            districts: [
+              ["North", 120, 45, "82%"], // Name, Pop(k), Funding/Cap($), Vax Rate
+              ["South", 250, 38, "75%"],
+              ["East", 85, 52, "90%"],
+              ["West", 180, 41, "88%"]
+            ]
+          }
+        },
+        {
+          id: 3,
+          type: 'LINE_GRAPH',
+          title: 'Crypto Arbitrage Index',
+          data: {
+            timeHours: [1, 2, 3, 4, 5], // Days
+            vanA_Dist: [1.20, 1.35, 1.28, 1.42, 1.55], // Token X Price ($)
+            fees: { Ex_A: "0.1% fee", Ex_B: "$5 flat fee", Ex_C: "0.5% spread" }
+          }
+        },
+        {
+          id: 4,
+          type: 'TABLE',
+          title: 'Agriculture Yields',
+          data: {
+            headers: ["Crop", "Yield (kg/ha)", "Price ($/kg)", "Drought Loss %"],
+            rows: [
+              ["Wheat", 4500, 0.25, 12],
+              ["Corn", 8000, 0.18, 25],
+              ["Rice", 6200, 0.42, 18],
+              ["Soy", 3100, 0.55, 10]
+            ]
+          }
+        }
+      ]
+    },
+    questions: [
+      {
+        id: 133,
+        text: "How many units of Aluminium-7075 can be produced in an 8-hour shift?",
+        options: ["32 units", "24 units", "40 units", "30 units", "35 units"],
+        answerIndex: 0,
+        explanation: "8 hours * 60 mins = 480 mins. 480 / 15 mins per unit = 32 units."
+      },
+      {
+        id: 134,
+        text: "What is the scrap cost for a 500kg batch of Titanium-64?",
+        options: ["£1,140", "£1,425", "£1,050", "£980", "£1,220"],
+        answerIndex: 0,
+        explanation: "Scrap amount = 500kg * 0.08 = 40kg. Scrap cost = 40kg * $28.50 = $1,140."
+      },
+      {
+        id: 135,
+        text: "What is the weight (kg) of a 100cm³ volume made of Stainless-316L?",
+        options: ["0.80 kg", "8.00 kg", "0.08 kg", "80.0 kg", "0.78 kg"],
+        answerIndex: 0,
+        explanation: "Mass = Density * Volume. 8.00 g/cm³ * 100 cm³ = 800g = 0.8 kg."
+      },
+      {
+        id: 136,
+        text: "Which alloy has the highest material cost per 1 hour of machine cycle time?",
+        options: ["Titanium-64", "Aluminium-7075", "Stainless-316L", "Titanium and Aluminium", "All equal"],
+        answerIndex: 0,
+        explanation: "Assuming 1kg/unit: Ti: (60/45)*28.5 = 38.0; Al: (60/15)*4.2 = 16.8; St: (60/30)*2.1 = 4.2. Titanium is highest."
+      },
+      {
+        id: 137,
+        text: "What is the total healthcare funding ($m) for the South district?",
+        options: ["$9.5m", "$10.2m", "$8.8m", "$11.0m", "$9.0m"],
+        answerIndex: 0,
+        explanation: "250,000 population * $38/capita = $9,500,000 = $9.5m."
+      },
+      {
+        id: 138,
+        text: "What is the weighted average vaccination rate for the North and East districts combined?",
+        options: ["85.3%", "86.0%", "84.5%", "87.2%", "83.8%"],
+        answerIndex: 0,
+        explanation: "North Vaxed: 120 * 0.82 = 98.4. East Vaxed: 85 * 0.90 = 76.5. Total Vaxed: 174.9. Total Pop: 205. Rate: 174.9 / 205 = 85.3%."
+      },
+      {
+        id: 139,
+        text: "If East funding per capita increases to match the West, what is the new total funding for East?",
+        options: ["$3.485m", "$4.420m", "$3.850m", "$4.120m", "$3.600m"],
+        answerIndex: 0,
+        explanation: "East Pop: 85,000. New Rate: $41 (West's rate). 85,000 * 41 = $3,485,000 = $3.485m."
+      },
+      {
+        id: 140,
+        text: "Ratio of North population to West population?",
+        options: ["2:3", "3:4", "4:5", "3:2", "5:6"],
+        answerIndex: 0,
+        explanation: "120 : 180 = 2 : 3."
+      },
+      {
+        id: 141,
+        text: "Profit from buying 10,000 Token X on Day 1 and selling on Day 5 at Ex_A (0.1% fee on each trade)?",
+        options: ["$3,472.50", "$3,500", "$3,400", "$3,380", "$3,600"],
+        answerIndex: 0,
+        explanation: "Buy: 10k * 1.2 = 12,000. Fee: 12. Sell: 10k * 1.55 = 15,500. Fee: 15.5. Net = 15,500 - 12,000 - 12 - 15.5 = $3,472.50."
+      },
+      {
+        id: 142,
+        text: "Net cost of buying $1,000 worth of Token X at Ex_B ($5 flat fee) vs Ex_C (0.5% spread)?",
+        options: ["Equal", "Ex_B is $2 cheaper", "Ex_C is $5 cheaper", "Ex_B is $5 cheaper", "Ex_C is $2 cheaper"],
+        answerIndex: 0,
+        explanation: "Ex_B: $5 fee. Ex_C: 0.5% of $1000 = $5 spread. They are equal."
+      },
+      {
+        id: 143,
+        text: "Which day showed the highest percentage increase in Token X price?",
+        options: ["Day 2", "Day 4", "Day 5", "Day 3", "Day 1"],
+        answerIndex: 0,
+        explanation: "D1-2: 15/120 = 12.5%. D3-4: 14/128 = 10.9%. D4-5: 13/142 = 9.1%. Day 2 is highest."
+      },
+      {
+        id: 144,
+        text: "At Ex_C, what is the 'effective price' to buy on Day 3?",
+        options: ["$1.2864", "$1.28", "$1.29", "$1.30", "$1.32"],
+        answerIndex: 0,
+        explanation: "Base: 1.28. Spread: 1.28 * 0.005 = 0.0064. Total = $1.2864."
+      },
+      {
+        id: 145,
+        text: "What is the total value of Token X held on Day 5 if 5,000 were bought on Day 1 and 5,000 on Day 3?",
+        options: ["$15,500", "$12,400", "$14,000", "$13,500", "$16,000"],
+        answerIndex: 0,
+        explanation: "Total tokens: 10,000. Price Day 5: $1.55. Value = 10k * 1.55 = $15,500."
+      },
+      {
+        id: 146,
+        text: "What is the net yield (kg/ha) for Wheat after accounting for drought loss?",
+        options: ["3,960 kg/ha", "4,000 kg/ha", "3,850 kg/ha", "4,100 kg/ha", "3,700 kg/ha"],
+        answerIndex: 0,
+        explanation: "4500 * (1 - 0.12) = 4500 * 0.88 = 3,960 kg/ha."
+      },
+      {
+        id: 147,
+        text: "Which crop has the highest revenue ($/ha) before drought loss?",
+        options: ["Rice", "Corn", "Soy", "Wheat", "Soy and Corn"],
+        answerIndex: 0,
+        explanation: "W: 1125; C: 1440; R: 2604; S: 1705. Rice is highest."
+      },
+      {
+        id: 148,
+        text: "Total revenue loss ($) for a 10-hectare Corn farm due to drought?",
+        options: ["$3,600", "$4,000", "$3,200", "$2,800", "$3,500"],
+        answerIndex: 0,
+        explanation: "Revenue/ha = 8000 * 0.18 = $1440. Loss/ha = 1440 * 0.25 = $360. 10 ha = $3,600."
+      },
+      {
+        id: 149,
+        text: "Ratio of Soy price to Wheat price?",
+        options: ["11:5", "2:1", "3:1", "5:2", "4:3"],
+        answerIndex: 0,
+        explanation: "0.55 : 0.25 = 55 : 25 = 11 : 5."
+      },
+      {
+        id: 150,
+        text: "If Corn yield increases by 10% and price decreases by 10%, what is the new revenue per hectare?",
+        options: ["$1,425.60", "$1,440.00", "$1,380.00", "$1,500.00", "$1,400.00"],
+        answerIndex: 0,
+        explanation: "New yield: 8800. New price: 0.162. 8800 * 0.162 = $1,425.60."
+      }
+    ]
+  },
+  {
+    setId: 109,
+    section: 'Quantitative Reasoning',
+    title: "QR Sprint F",
+    type: "MULTI_TABLE",
+    context: "Advanced VC, automation, and energy metrics. 13 Minutes.",
+    dataSource: {
+      isSprint: true,
+      scenarios: [
+        {
+          id: 1,
+          type: 'TABLE',
+          title: 'Venture Capital Dilution',
+          data: {
+            headers: ["Round", "Pre-money ($m)", "Investment ($m)", "Founder Stake %"],
+            rows: [
+              ["Seed", 2.0, 0.5, 80],
+              ["Series A", 8.0, 2.0, 64],
+              ["Series B", 40.0, 10.0, 51.2]
+            ]
+          }
+        },
+        {
+          id: 2,
+          type: 'TABLE',
+          title: 'Logistics Automation ROI',
+          context: 'Manual: 15 staff, $2.5k/mo each. Auto: $500k cost, $20k/yr maint, 10-yr life.',
+          data: {
+            headers: ["Year", "Manual Cost ($k)", "Auto Cost ($k)"],
+            rows: [
+              ["Year 1", 450, 70], // Auto: Depr(50) + Maint(20)
+              ["Year 2", 450, 70],
+              ["Year 3", 450, 70]
+            ]
+          }
+        },
+        {
+          id: 3,
+          type: 'PIE_AND_TABLE',
+          title: 'Telecom Segment ARPU',
+          data: {
+            pieTotal: 100, // % of users
+            pieData: { Basic: 50, Pro: 35, Elite: 15 },
+            renewableTable: [ // Segment, Monthly Base ($), Overage ($/GB)
+              ["Basic", 25, 10],
+              ["Pro", 55, 5],
+              ["Elite", 95, 0]
+            ]
+          }
+        },
+        {
+          id: 4,
+          type: 'LINE_GRAPH',
+          title: 'Energy Grid Injection',
+          data: {
+            timeHours: [1, 2, 3, 4, 5], // Time of Day
+            vanA_Dist: [30, 45, 120, 150, 80], // Price/MWh ($)
+            vanB_Dist: [50, 60, 100, 110, 70], // Demand (GW)
+            storageLoss: "10%"
+          }
+        }
+      ]
+    },
+    questions: [
+      {
+        id: 151,
+        text: "What is the post-money valuation of the company after the Series A round?",
+        options: ["$10.0m", "$8.0m", "$12.0m", "$6.0m", "$15.0m"],
+        answerIndex: 0,
+        explanation: "Post-money = Pre-money ($8.0m) + Investment ($2.0m) = $10.0m."
+      },
+      {
+        id: 152,
+        text: "By what percentage was the founder's stake diluted during the Series B round?",
+        options: ["20%", "25%", "12.8%", "15%", "10%"],
+        answerIndex: 0,
+        explanation: "Series B Investment ($10m) / Post-money ($50m) = 20%. Stake went from 64% to 51.2% (a 20% reduction)."
+      },
+      {
+        id: 153,
+        text: "What is the total value ($m) of the founder's stake after the Series B round?",
+        options: ["$25.6m", "$20.0m", "$15.5m", "$30.2m", "$28.4m"],
+        answerIndex: 0,
+        explanation: "Post-money Series B = $50m. Founder stake = 51.2%. 50 * 0.512 = $25.6m."
+      },
+      {
+        id: 154,
+        text: "What was the step-up in pre-money valuation from Series A to Series B?",
+        options: ["4.0x", "5.0x", "3.0x", "2.0x", "10.0x"],
+        answerIndex: 0,
+        explanation: "Series B Pre-money ($40m) / Series A Post-money ($10m) = 4.0x."
+      },
+      {
+        id: 155,
+        text: "What is the annual saving ($k) provided by automation compared to manual labor?",
+        options: ["$380k", "$400k", "$350k", "$420k", "$300k"],
+        answerIndex: 0,
+        explanation: "Manual: 15 * 2.5k * 12 = $450k. Auto: $70k (Depr+Maint). Saving = 450 - 70 = $380k."
+      },
+      {
+        id: 156,
+        text: "How many months does it take for the automation system to pay for itself (breakeven)?",
+        options: ["15.8 months", "12 months", "18 months", "20 months", "24 months"],
+        answerIndex: 0,
+        explanation: "Upfront cost $500k. Annual operational saving = (Manual $450k - Auto Maint $20k) = $430k. Monthly saving = 430/12 = $35.83k. 500 / 35.83 = 13.9 months. However, factoring in depreciation as part of the cost model (which is $50k/yr), the net annual saving is $380k. 500 / 380 * 12 = 15.78 ≈ 15.8 months."
+      },
+      {
+        id: 157,
+        text: "If manual staff salaries increase by 10%, what is the new annual manual cost?",
+        options: ["$495k", "$450k", "$500k", "$475k", "$520k"],
+        answerIndex: 0,
+        explanation: "450k * 1.1 = $495k."
+      },
+      {
+        id: 158,
+        text: "Total cost of automation over its 10-year life?",
+        options: ["$700k", "$500k", "$200k", "$650k", "$750k"],
+        answerIndex: 0,
+        explanation: "Upfront ($500k) + Maint ($20k * 10) = $700k."
+      },
+      {
+        id: 159,
+        text: "What is the weighted average monthly revenue from a Pro user who uses 5GB over their limit?",
+        options: ["$80", "$60", "$75", "$85", "$70"],
+        answerIndex: 0,
+        explanation: "Base ($55) + Overage (5GB * $5/GB) = 55 + 25 = $80."
+      },
+      {
+        id: 160,
+        text: "If there are 10,000 total users, how much monthly revenue ($k) comes from the Basic segment base fees?",
+        options: ["$125k", "$100k", "$150k", "$75k", "$250k"],
+        answerIndex: 0,
+        explanation: "Basic users: 50% of 10,000 = 5,000. Revenue = 5,000 * $25 = $125,000 = $125k."
+      },
+      {
+        id: 161,
+        text: "Which segment generates the most base monthly revenue if there are 1,000 users?",
+        options: ["Pro", "Basic", "Elite", "Pro and Elite", "All equal"],
+        answerIndex: 0,
+        explanation: "Basic: 500 * 25 = 12.5k; Pro: 350 * 55 = 19.25k; Elite: 150 * 95 = 14.25k. Pro is highest."
+      },
+      {
+        id: 162,
+        text: "A Basic user uses 10GB over limit. By what percentage does their bill increase?",
+        options: ["400%", "300%", "250%", "100%", "500%"],
+        answerIndex: 0,
+        explanation: "Base: $25. Overage: 10 * 10 = $100. Bill goes from 25 to 125. Increase = 100/25 = 400%."
+      },
+      {
+        id: 163,
+        text: "Ratio of Elite users to Pro users?",
+        options: ["3:7", "1:2", "1:3", "2:5", "3:5"],
+        answerIndex: 0,
+        explanation: "15 : 35 = 3 : 7."
+      },
+      {
+        id: 164,
+        text: "Revenue from selling 100MWh of stored energy at Hour 4 (Peak) after 10% storage loss?",
+        options: ["$13,500", "$15,000", "$12,000", "$14,200", "$11,800"],
+        answerIndex: 0,
+        explanation: "Energy available = 100 * 0.9 = 90MWh. Price = $150/MWh. Revenue = 90 * 150 = $13,500."
+      },
+      {
+        id: 165,
+        text: "What is the percentage profit margin of buying energy at Hour 1 and selling at Hour 4 (accounting for 10% loss)?",
+        options: ["350%", "400%", "300%", "450%", "500%"],
+        answerIndex: 0,
+        explanation: "Cost for 100MWh: 100 * 30 = $3,000. Sale of 90MWh: 90 * 150 = $13,500. Profit = 10,500. Margin = 10,500/3,000 = 350%."
+      },
+      {
+        id: 166,
+        text: "Ratio of Hour 4 price to Hour 1 price?",
+        options: ["5:1", "4:1", "3:1", "10:1", "2:1"],
+        answerIndex: 0,
+        explanation: "150 : 30 = 5 : 1."
+      },
+      {
+        id: 167,
+        text: "How much energy (GW) is required to meet 10% of the peak demand?",
+        options: ["11 GW", "15 GW", "10 GW", "12 GW", "8 GW"],
+        answerIndex: 0,
+        explanation: "Peak Demand (Hour 4) = 110 GW. 10% = 11 GW."
+      },
+      {
+        id: 168,
+        text: "If storage loss increases to 20%, what is the new revenue from selling 100MWh at Hour 3?",
+        options: ["$9,600", "$12,000", "$10,000", "$8,400", "$11,200"],
+        answerIndex: 0,
+        explanation: "Energy available = 80MWh. Price = $120. Revenue = 80 * 120 = $9,600."
       }
     ]
   }
