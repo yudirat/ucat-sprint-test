@@ -146,6 +146,16 @@ This log tracks the logic, variables, and question mapping for all standardized 
 - **Themes:** Albert Camus (Existentialism), CRISPR Policy (Genetic Editing), Medieval Guilds (Economic History), Behavioral Economics (Loss Aversion), Exoplanet Biosignatures (Spectroscopy).
 - **Logic:** Nuanced tone detection, identification of logical fallacies, and scientific data interpretation.
 
+## [Section: Verbal Reasoning] - Elite Tier (22 Qs / 10.5 Mins)
+
+### Sprint ID: 113 (VR Elite Sprint 1)
+**Questions 235-256**
+- **Scenario 1 (Liar’s Dividend):** Epistemic crisis, digital watermarking, jury cognitive bias.
+- **Scenario 2 (Epigenetics):** Transgenerational inheritance, germline reprogramming, niche construction vs. hard-coding.
+- **Scenario 3 (Neural-Reality):** Nozick's Experience Machine, hedonic paradox, post-session dysphoria.
+- **Scenario 4 (Triffin Dilemma):** Global reserve assets, liquidity-confidence paradox, DSL settlement.
+- **Scenario 5 (Kessler Syndrome):** Low Earth Orbit ablation point, ADR legal security dilemma, dual-use technology.
+
 ---
 
 ## [Section: Decision Making] - 2025 Standard (18 Qs / 18.5 Mins)
