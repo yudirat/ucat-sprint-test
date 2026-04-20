@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0] - 2026-04-20
+### Improved
+- **Stimulus Renderer Refactor:** Rewrote `DataSourceRenderer` to be fully data-driven using `questionRange` properties. This eliminates fragile hardcoded logic and ensures all 11 sprints render correctly.
+- **Metadata Visibility:** All stimulus types (Table, Graph, Pie, etc.) now consistently render their Scenario Title and Context/Instructions, addressing "incomplete information" issues.
+- **DM Data Enhancement:** Upgraded the "Product Reliability" table in DM Sprint A with additional "Cost" data to increase analytical depth.
+
 ## [1.10.0] - 2026-04-20
-### Added
+...
+
 - **Multi-Part Syllogism UI:** Implemented UCAT-standard Yes/No toggles for multi-part syllogism questions in the test view.
 - **Enhanced DM Variety:** Replaced redundant items in DM Sprint A with high-quality Strengthening Arguments, Logical Puzzles, and Venn Logic questions.
 - **Syllogism Scoring Engine:** Finalized the 2/1/0 partial credit engine for multi-part items.

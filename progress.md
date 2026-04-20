@@ -38,4 +38,5 @@
 - [x] Logic audit and Sprint Dev Log initialization
 - [x] Implement **Partial Credit Scoring** for Syllogisms and SJT
 - [x] **Full System Audit:** Verified all 168 questions for mathematical accuracy and logical consistency.
-- [x] **Data Integrity:** Re-indexed all question IDs and Set IDs to ensure a collision-free environment.
+- [x] **Stimulus Renderer Refactor:** Implemented data-driven scenario selection and metadata (Title/Context) rendering for all stimuli.
+- [x] **Data Integrity:** Re-indexed all question IDs and Set IDs; added `questionRange` mapping to scenarios.

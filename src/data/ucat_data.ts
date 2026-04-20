@@ -39,6 +39,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [1, 5],
           type: 'TABLE',
           title: 'Train Logistics',
           context: 'Operational data for four major train routes.',
@@ -54,6 +55,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [6, 9],
           type: 'PIE_CHART',
           title: 'Energy Production',
           context: 'National Energy Production breakdown.',
@@ -65,6 +67,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [10, 14],
           type: 'BAR_CHART',
           title: 'Retail Performance',
           context: 'Annual revenue for five retail branches.',
@@ -77,6 +80,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [15, 18],
           type: 'LINE_GRAPH',
           title: 'Stock Indices',
           context: 'Value of two indices over 5 months.',
@@ -228,6 +232,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [19, 27],
           type: 'MULTI_TABLE',
           title: 'Healthcare Costs',
           context: 'Medical costs in local currency (Δ) and exchange rates.',
@@ -242,6 +247,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [28, 36],
           type: 'TABLE',
           title: 'Flight Scheduling',
           context: 'Flight durations and fuel usage.',
@@ -397,6 +403,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [37, 40],
           type: 'PASSAGE',
           title: 'Arctic Ecosystems',
           data: {
@@ -406,6 +413,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [41, 44],
           type: 'PASSAGE',
           title: 'Telemedicine Regulation',
           data: {
@@ -415,6 +423,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [45, 48],
           type: 'PASSAGE',
           title: 'Cognitive Linguistics',
           data: {
@@ -424,6 +433,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [49, 53],
           type: 'PASSAGE',
           title: 'Renewable Grid Stability',
           data: {
@@ -433,6 +443,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 5,
+          questionRange: [54, 58],
           type: 'PASSAGE',
           title: 'Renaissance Art Techniques',
           data: {
@@ -610,6 +621,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [59, 63],
           type: 'TEXT_LOGIC',
           title: 'Office Assignments',
           context: 'Six employees (A, B, C, D, E, F) are being assigned to three offices (1, 2, 3).',
@@ -625,6 +637,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [64, 68],
           type: 'TEXT_LOGIC',
           title: 'Health Claims',
           context: 'Evaluate the following conclusions based on the premises provided.',
@@ -639,6 +652,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [69, 72],
           type: 'VENN_DIAGRAM',
           title: 'Club Memberships',
           context: 'A survey of 100 students regarding three clubs: Coding (C), Chess (H), and Art (A).',
@@ -658,15 +672,16 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [73, 76],
           type: 'TABLE',
-          title: 'Product Reliability',
+          title: 'Product Reliability Analysis',
           context: 'Failure rates of three electronic components over 5 years.',
           data: {
-            headers: ["Component", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5"],
+            headers: ["Component", "Year 1", "Year 2", "Year 3", "Year 4", "Year 5", "Cost (£)"],
             rows: [
-              ["Sensor A", "0.5%", "1.2%", "2.5%", "4.0%", "6.5%"],
-              ["Processor B", "0.2%", "0.4%", "0.8%", "1.5%", "3.0%"],
-              ["Battery C", "1.0%", "2.5%", "5.0%", "12.0%", "25.0%"]
+              ["Sensor A", "0.5%", "1.2%", "2.5%", "4.0%", "6.5%", 15],
+              ["Processor B", "0.2%", "0.4%", "0.8%", "1.5%", "3.0%", 120],
+              ["Battery C", "1.0%", "2.5%", "5.0%", "12.0%", "25.0%", 45]
             ]
           }
         }
@@ -833,6 +848,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [77, 81],
           type: 'LINE_GRAPH',
           title: 'Global Shipping Logistics',
           context: 'Comparison of Fuel Index and Cargo Volume. Base rate is $1.20 per index point.',
@@ -844,6 +860,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [82, 86],
           type: 'MULTI_TABLE',
           title: 'Real Estate Portfolio',
           context: 'Investment yields across global cities (Tax: London 20%, NYC 25%, Tokyo 15%, Dubai 0%).',
@@ -856,6 +873,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [87, 90],
           type: 'BAR_CHART',
           title: 'Machine Reliability',
           context: 'Defects per 1000 units based on machine age. Defect cost: $50.',
@@ -978,6 +996,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [91, 99],
           type: 'PIE_AND_TABLE',
           title: 'E-commerce Market Analysis',
           data: {
@@ -993,6 +1012,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [100, 108],
           type: 'TABLE',
           title: 'Pharmaceutical Trial Metrics',
           context: 'Efficacy data across different patient demographics.',
@@ -1148,18 +1168,21 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [109, 116],
           type: 'TEXT',
           title: 'Medical Ethics: Confidentiality',
           context: "A medical student, Sarah, is in a public elevator at the hospital. She witnesses a senior consultant, Dr. Smith, discussing a specific patient's rare condition and personal history with another colleague, using the patient's full name. There are several members of the public in the elevator."
         },
         {
           id: 2,
+          questionRange: [117, 124],
           type: 'TEXT',
           title: 'Teamwork: Task Management',
           context: "You are a junior doctor on a busy surgical ward. Your colleague, James, has been spending a lot of time on his phone in the staff room while you have a long list of patient discharges and blood tests to complete before the end of your shift."
         },
         {
           id: 3,
+          questionRange: [125, 132],
           type: 'TEXT',
           title: 'Professionalism: Social Media',
           context: "A group of medical students are planning to start a TikTok channel where they film themselves performing 'funny' dances in the hospital corridors during their lunch break. They plan to keep the patients in the background to show the 'real hospital vibe'."
@@ -1348,6 +1371,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [133, 136],
           type: 'TABLE',
           title: 'Aerospace Alloy Production',
           data: {
@@ -1361,6 +1385,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [137, 140],
           type: 'MULTI_TABLE',
           title: 'District Health Metrics',
           data: {
@@ -1374,6 +1399,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [141, 145],
           type: 'LINE_GRAPH',
           title: 'Crypto Arbitrage Index',
           data: {
@@ -1384,6 +1410,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [146, 150],
           type: 'TABLE',
           title: 'Agriculture Yields',
           data: {
@@ -1538,6 +1565,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [151, 154],
           type: 'TABLE',
           title: 'Venture Capital Dilution',
           data: {
@@ -1551,6 +1579,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [155, 158],
           type: 'TABLE',
           title: 'Logistics Automation ROI',
           context: 'Manual: 15 staff, $2.5k/mo each. Auto: $500k cost, $20k/yr maint, 10-yr life.',
@@ -1565,6 +1594,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [159, 163],
           type: 'PIE_AND_TABLE',
           title: 'Telecom Segment ARPU',
           data: {
@@ -1579,6 +1609,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [164, 168],
           type: 'LINE_GRAPH',
           title: 'Energy Grid Injection',
           data: {
@@ -1730,6 +1761,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [169, 172],
           type: 'PASSAGE',
           title: 'Neuroplasticity and Language',
           data: {
@@ -1739,6 +1771,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [173, 175],
           type: 'PASSAGE',
           title: 'Quantum Computing Ethics',
           data: {
@@ -1748,6 +1781,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [176, 179],
           type: 'PASSAGE',
           title: 'Deep-Sea Mining',
           data: {
@@ -1757,6 +1791,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [180, 183],
           type: 'PASSAGE',
           title: 'The Roman Republic',
           data: {
@@ -1766,6 +1801,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 5,
+          questionRange: [184, 190],
           type: 'PASSAGE',
           title: 'Urban Micro-Climates',
           data: {
@@ -1943,6 +1979,7 @@ export const ucatSprintTests: UCATSet[] = [
       scenarios: [
         {
           id: 1,
+          questionRange: [191, 194],
           type: 'PASSAGE',
           title: 'Existentialism in Literature',
           data: {
@@ -1952,6 +1989,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 2,
+          questionRange: [195, 198],
           type: 'PASSAGE',
           title: 'Genetic Engineering Policy',
           data: {
@@ -1961,6 +1999,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 3,
+          questionRange: [199, 202],
           type: 'PASSAGE',
           title: 'Medieval Guild Dynamics',
           data: {
@@ -1970,6 +2009,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 4,
+          questionRange: [203, 206],
           type: 'PASSAGE',
           title: 'Behavioral Economics',
           data: {
@@ -1979,6 +2019,7 @@ export const ucatSprintTests: UCATSet[] = [
         },
         {
           id: 5,
+          questionRange: [207, 212],
           type: 'PASSAGE',
           title: 'Exoplanet Atmospheric Chemistry',
           data: {
