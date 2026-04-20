@@ -851,11 +851,17 @@ export const ucatSprintTests: UCATSet[] = [
           questionRange: [77, 81],
           type: 'LINE_GRAPH',
           title: 'Global Shipping Logistics',
-          context: 'Comparison of Fuel Index and Cargo Volume. Base rate is $1.20 per index point.',
+          context: 'Analysis of fuel costs relative to cargo throughput across the first half of the year.',
           data: {
             months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
             fuelIndex: [100, 115, 130, 125, 145, 160],
-            volumeTons: [50000, 48000, 52000, 60000, 55000, 58000]
+            volumeTons: [50000, 48000, 52000, 60000, 55000, 58000],
+            rowLabels: ['Fuel Index (pts)', 'Cargo Volume (Tons)'],
+            notes: [
+              "Fuel Cost Formula: [Index Value] × [Base Rate] × ([Volume] / 1000)",
+              "Base Rate: $1.20 per index point per 1000 tons.",
+              "Cargo Volume is measured at departure."
+            ]
           }
         },
         {
@@ -863,11 +869,17 @@ export const ucatSprintTests: UCATSet[] = [
           questionRange: [82, 86],
           type: 'MULTI_TABLE',
           title: 'Real Estate Portfolio',
-          context: 'Investment yields across global cities (Tax: London 20%, NYC 25%, Tokyo 15%, Dubai 0%).',
+          context: 'Comparative yields and maintenance costs for global property investments.',
           data: {
+            headers: ["Asset Class", "Gross Yield (%)", "Maint. (% of Gross)"],
             assets: [
               ["Residential", "5.2%", "10%"],
               ["Commercial", "7.8%", "22%"]
+            ],
+            notes: [
+              "Annual Net Income = [Property Value × Yield] × (1 - Maintenance %)",
+              "Local Tax Rates: London 20%, NYC 25%, Tokyo 15%, Dubai 0%",
+              "All maintenance costs are calculated based on the gross yield, not the property value."
             ]
           }
         },
@@ -876,10 +888,16 @@ export const ucatSprintTests: UCATSet[] = [
           questionRange: [87, 90],
           type: 'BAR_CHART',
           title: 'Machine Reliability',
-          context: 'Defects per 1000 units based on machine age. Defect cost: $50.',
+          context: 'Defect rates tracked by equipment age. Data shows defects per 1,000 units produced.',
           data: {
             labels: ['1 Yr', '2 Yr', '3 Yr', '4 Yr', '5 Yr', '6 Yr'],
-            data: [2, 5, 8, 15, 22, 35]
+            data: [2, 5, 8, 15, 22, 35],
+            unit: 'defects',
+            notes: [
+              "Each defect results in a fixed disposal cost of $50.",
+              "Data is based on a standard production run of 1,000 units.",
+              "Reliability threshold is considered breached at >10 defects/1k units."
+            ]
           }
         },
         {
@@ -887,7 +905,7 @@ export const ucatSprintTests: UCATSet[] = [
           questionRange: [213, 216],
           type: 'TABLE',
           title: 'Renewable Energy Portfolio',
-          context: 'Quarterly generation (MWh) and subsidiary subsidies.',
+          context: 'Quarterly generation metrics and government subsidiary support rates.',
           data: {
             headers: ["Subsidiary", "Wind (MWh)", "Solar (MWh)", "Subsidy (£/MWh)"],
             rows: [
@@ -895,6 +913,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["GreenGrid", 3800, 5100, 10.00],
               ["WindWard", 7200, 1500, 15.00],
               ["SolarSun", 1200, 8500, 8.50]
+            ],
+            notes: [
+              "Total Subsidiary Revenue = ([Wind + Solar] × Subsidy Rate).",
+              "1 MWh = 1,000 kWh.",
+              "Subsidy rates are fixed for the 2026 fiscal year."
             ]
           }
         }

@@ -35,7 +35,25 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     return (
       <div className="p-4 bg-slate-50 border-b border-slate-200">
         {activeTitle && <h4 className="font-black text-[#004a99] text-xs uppercase tracking-widest mb-1">{activeTitle}</h4>}
-        {activeContext && <p className="text-xs text-slate-500 italic">{activeContext}</p>}
+        {activeContext && <p className="text-xs text-slate-500 italic leading-relaxed">{activeContext}</p>}
+      </div>
+    );
+  };
+
+  const renderNotes = () => {
+    const notes = activeData.notes || activeData.legend || [];
+    if (!notes || notes.length === 0) return null;
+    return (
+      <div className="p-4 bg-amber-50/50 border-t border-slate-200">
+        <h5 className="text-[10px] font-black text-amber-700 uppercase mb-2 tracking-tighter">Reference Notes:</h5>
+        <ul className="space-y-1">
+          {notes.map((note: string, i: number) => (
+            <li key={i} className="text-[10px] text-slate-600 flex gap-2">
+              <span className="text-amber-500">•</span>
+              <span>{note}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   };
@@ -44,28 +62,31 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     return (
       <div className="flex flex-col h-full">
         {renderHeader()}
-        <table className="w-full text-sm">
-          <thead className="bg-[#004a99] text-white">
-            <tr>
-              {activeData.headers.map((h: string) => (
-                <th key={h} className="px-4 py-3 text-left font-bold uppercase tracking-tighter text-xs border-r border-white/20 last:border-0">
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-200">
-            {activeData.rows.map((row: any[], i: number) => (
-              <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-                {row.map((cell, j) => (
-                  <td key={j} className="px-4 py-3 text-slate-700 font-medium border-r border-slate-100 last:border-0">
-                    {cell}
-                  </td>
+        <div className="flex-1 overflow-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-[#004a99] text-white sticky top-0 z-10">
+              <tr>
+                {activeData.headers.map((h: string) => (
+                  <th key={h} className="px-4 py-3 text-left font-bold uppercase tracking-tighter text-xs border-r border-white/20 last:border-0">
+                    {h}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              {activeData.rows.map((row: any[], i: number) => (
+                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                  {row.map((cell, j) => (
+                    <td key={j} className="px-4 py-3 text-slate-700 font-medium border-r border-slate-100 last:border-0">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {renderNotes()}
       </div>
     );
   }
@@ -85,31 +106,33 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
           </div>
           <p className="mt-4 text-[10px] font-bold text-slate-400 uppercase">Total: {activeData.pieTotal} Units</p>
         </div>
-        <table className="w-full text-sm">
-          <thead className="bg-[#004a99] text-white">
-            <tr>
-              {/* Dynamic headers if available, otherwise fallback */}
-              {activeData.tableHeaders ? activeData.tableHeaders.map((h:string) => (
-                 <th key={h} className="px-4 py-2 text-left text-xs font-bold uppercase">{h}</th>
-              )) : (
-                <>
-                  <th className="px-4 py-2 text-left text-xs font-bold uppercase">Category</th>
-                  <th className="px-4 py-2 text-left text-xs font-bold uppercase">Share</th>
-                  <th className="px-4 py-2 text-left text-xs font-bold uppercase">Rate/Cost</th>
-                </>
-              )}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-200">
-            {activeData.renewableTable.map((row: any[], i: number) => (
-              <tr key={i} className="hover:bg-slate-50">
-                {row.map((cell, j) => (
-                  <td key={j} className="px-4 py-2 text-slate-700 font-medium">{cell}</td>
-                ))}
+        <div className="flex-1 overflow-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-[#004a99] text-white sticky top-0">
+              <tr>
+                {activeData.tableHeaders ? activeData.tableHeaders.map((h:string) => (
+                   <th key={h} className="px-4 py-2 text-left text-xs font-bold uppercase">{h}</th>
+                )) : (
+                  <>
+                    <th className="px-4 py-2 text-left text-xs font-bold uppercase">Category</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold uppercase">Share</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold uppercase">Rate/Cost</th>
+                  </>
+                )}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              {activeData.renewableTable.map((row: any[], i: number) => (
+                <tr key={i} className="hover:bg-slate-50">
+                  {row.map((cell, j) => (
+                    <td key={j} className="px-4 py-2 text-slate-700 font-medium">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {renderNotes()}
       </div>
     );
   }
@@ -118,61 +141,67 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     const timeLabels = activeData.timeHours || activeData.months || activeData.labels || [];
     const valA = activeData.vanA_Dist || activeData.fuelIndex || activeData.data || [];
     const valB = activeData.vanB_Dist || activeData.volumeTons || null;
+    const rowLabels = activeData.rowLabels || activeData.legend || ['Data A', 'Data B'];
 
     return (
       <div className="flex flex-col h-full">
         {renderHeader()}
-        <div className="p-6">
+        <div className="p-6 overflow-auto">
           <table className="w-full text-xs border border-slate-300 border-collapse">
             <thead>
               <tr className="bg-slate-800 text-white">
                 <th className="border border-slate-600 p-2 text-left">Data Point</th>
-                {timeLabels.map((h: any) => <th key={h} className="border border-slate-600 p-2">{h}</th>)}
+                {timeLabels.map((h: any) => <th key={h} className="border border-slate-600 p-2 text-center">{h}</th>)}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
               <tr className="bg-white">
-                <td className="border border-slate-200 p-2 font-bold bg-slate-100">Index/Value A</td>
-                {valA.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center">{d}</td>)}
+                <td className="border border-slate-200 p-2 font-bold bg-slate-100 min-w-[120px]">{rowLabels[0]}</td>
+                {valA.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center font-medium">{d}</td>)}
               </tr>
               {valB && (
                 <tr className="bg-slate-50">
-                  <td className="border border-slate-200 p-2 font-bold bg-slate-100">Index/Value B</td>
-                  {valB.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center">{d}</td>)}
+                  <td className="border border-slate-200 p-2 font-bold bg-slate-100 min-w-[120px]">{rowLabels[1]}</td>
+                  {valB.map((d: number, i: number) => <td key={i} className="border border-slate-200 p-2 text-center font-medium">{d}</td>)}
                 </tr>
               )}
             </tbody>
           </table>
         </div>
+        {renderNotes()}
       </div>
     );
   }
 
   if (activeType === 'MULTI_TABLE') {
     const rows = activeData.equipment || activeData.assets || activeData.districts || activeData.renewableTable || [];
+    const headers = activeData.headers || ["Item", "Value/Cost", "Variable"];
+
     return (
       <div className="space-y-0 divide-y divide-slate-200 flex flex-col h-full">
         {renderHeader()}
-        <table className="w-full text-sm">
-          <thead className="bg-[#004a99] text-white">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-bold uppercase">Item</th>
-              <th className="px-4 py-3 text-left text-xs font-bold uppercase">Value/Cost</th>
-              <th className="px-4 py-3 text-left text-xs font-bold uppercase">Variable</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-200">
-            {rows.map((row: any[], i: number) => (
-              <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
-                {row.map((cell, j) => (
-                  <td key={j} className="px-4 py-3 text-slate-700 font-medium">{cell}</td>
+        <div className="flex-1 overflow-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-[#004a99] text-white sticky top-0">
+              <tr>
+                {headers.map((h: string) => (
+                  <th key={h} className="px-4 py-3 text-left text-xs font-bold uppercase">{h}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              {rows.map((row: any[], i: number) => (
+                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                  {row.map((cell, j) => (
+                    <td key={j} className="px-4 py-3 text-slate-700 font-medium">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         {activeData.exchange && (
-          <div className="p-6 bg-slate-50">
+          <div className="p-6 bg-slate-50 border-t">
             <h4 className="font-bold text-xs uppercase text-slate-500 mb-4 tracking-wider">Additional Multipliers / Rates</h4>
             <div className="flex gap-12 flex-wrap">
               {Object.entries(activeData.exchange).map(([key, val]) => (
@@ -184,6 +213,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
             </div>
           </div>
         )}
+        {renderNotes()}
       </div>
     );
   }
