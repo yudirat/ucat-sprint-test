@@ -722,35 +722,47 @@ export const ucatSprintTests: UCATSet[] = [
         multiPartCorrect: [0, 0, 0, 1, 0],
         answerIndex: -1,
         options: ["Yes", "No"],
-        explanation: "1: No. 'Some nutrient-dense are expensive' and 'Organic are nutrient-dense' doesn't guarantee an organic-expensive overlap. 4: Yes. Expensive foods are nutrient-dense and not subsidized."
+        explanation: "1: No. 'Some nutrient-dense are expensive' and 'Organic are nutrient-dense' doesn't guarantee an organic-expensive overlap. 4: Yes. Expensive foods are nutrient-dense and not subsidized (Rule 3)."
       },
       {
         id: 65,
-        text: "Conclusion: 'If a food is not mass-produced, it is not subsidized.'",
-        options: ["Yes", "No"],
+        text: "Which of the following MUST be true if E is in Office 3?",
+        options: ["D is in Office 1", "D is in Office 3", "B is in Office 2", "A is in Office 3", "A and D are together"],
         answerIndex: 1,
-        explanation: "No. 'Most subsidized foods are mass-produced' implies some might not be."
+        explanation: "If E is in 3, and Rule 4 says 'If D is in 2, then E is in 2', the contrapositive is 'If E is not in 2, D is not in 2'. Since D cannot be in 1 (C and F are in 1 and 2), D must be in 3 with E."
       },
       {
         id: 66,
-        text: "Conclusion: 'Organic vegetables are never subsidized.'",
-        options: ["Yes", "No"],
-        answerIndex: 1,
-        explanation: "No. The premises don't link organic directly to subsidy exclusion, only expensive foods."
+        text: "Which of the following arguments best strengthens the claim that hospitals should prioritize generic over brand-name drugs?",
+        options: [
+          "Generic drugs have the same active ingredients and safety profiles as brand-name drugs but cost significantly less.",
+          "Many patients prefer the packaging and familiarity of brand-name drugs.",
+          "Brand-name drugs are often the only ones available for rare and complex conditions.",
+          "Reducing hospital costs allows for more investment in life-saving equipment and staff training.",
+          "Brand-name drugs are developed through expensive research that generic manufacturers do not have to perform."
+        ],
+        answerIndex: 0,
+        explanation: "Option A directly supports the switch by proving clinical equivalence while highlighting the cost benefit, which is the primary driver for prioritizing generics."
       },
       {
         id: 67,
-        text: "Conclusion: 'Some expensive foods are nutrient-dense.'",
-        options: ["Yes", "No"],
-        answerIndex: 0,
-        explanation: "Yes. 'Some nutrient-dense foods are expensive' is given, which is reversible."
+        text: "Five doctors (P, Q, R, S, T) work different shifts. P works before Q. R works after S. T works between P and S. If Q works last, who works the second shift?",
+        options: ["P", "Q", "R", "S", "T"],
+        answerIndex: 4,
+        explanation: "Order: P - T - S - R - Q. T is second because P must be before Q, and T is between P and S, and R is after S."
       },
       {
         id: 68,
-        text: "Conclusion: 'No organic vegetable is mass-produced.'",
-        options: ["Yes", "No"],
-        answerIndex: 1,
-        explanation: "No. There is no information linking organic status to mass-production."
+        text: "Which of the following is true regarding the Art club members?",
+        options: [
+          "Exactly 7 members belong to all three clubs.",
+          "The number of members in only the Art club is 20.",
+          "There are 35 total members in the Art club.",
+          "Every Art club member is also in the Coding club.",
+          "Most Art club members are not in the Chess club."
+        ],
+        answerIndex: 0,
+        explanation: "The Venn data explicitly states 'abc: 7', meaning 7 students are in all three clubs."
       },
       {
         id: 69,

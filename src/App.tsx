@@ -385,28 +385,56 @@ function App() {
               </h3>
 
               <div className="space-y-4">
-                {currentQuestion.options.map((option, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleAnswerSelect(idx)}
-                    className={`w-full text-left p-4 rounded border-2 transition-all cursor-pointer flex items-center group ${
-                      userAnswers[currentQuestion.id] === idx
-                        ? 'border-[#004a99] bg-[#eef6ff] shadow-md'
-                        : 'border-white bg-white hover:border-slate-200 hover:shadow-sm'
-                    }`}
-                  >
-                    <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center mr-4 text-xs font-bold shrink-0 transition-colors ${
-                      userAnswers[currentQuestion.id] === idx
-                        ? 'bg-[#004a99] border-[#004a99] text-white'
-                        : 'border-slate-300 text-slate-500 group-hover:border-[#004a99]'
-                    }`}>
-                      {String.fromCharCode(65 + idx)}
-                    </div>
-                    <span className={`font-medium ${userAnswers[currentQuestion.id] === idx ? 'text-[#004a99]' : 'text-slate-700'}`}>
-                      {option}
-                    </span>
-                  </button>
-                ))}
+                {currentQuestion.type === 'syllogism' ? (
+                  <div className="space-y-6">
+                    {currentQuestion.multiPartLabels?.map((label, partIdx) => (
+                      <div key={partIdx} className="p-4 bg-white border border-slate-200 rounded-lg shadow-sm">
+                        <p className="text-sm font-bold text-slate-700 mb-3">{label}</p>
+                        <div className="flex gap-2">
+                          {[1, 0].map((val) => {
+                            const isSelected = (userAnswers[currentQuestion.id] as number[])?.[partIdx] === val;
+                            return (
+                              <button
+                                key={val}
+                                onClick={() => handleAnswerSelect(val, partIdx)}
+                                className={`flex-1 py-2 px-4 rounded border-2 font-bold text-xs transition-all ${
+                                  isSelected 
+                                    ? 'bg-[#004a99] border-[#004a99] text-white shadow-md' 
+                                    : 'bg-white border-slate-200 text-slate-500 hover:border-[#004a99] hover:text-[#004a99]'
+                                }`}
+                              >
+                                {val === 1 ? 'YES' : 'NO'}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  currentQuestion.options.map((option, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleAnswerSelect(idx)}
+                      className={`w-full text-left p-4 rounded border-2 transition-all cursor-pointer flex items-center group ${
+                        userAnswers[currentQuestion.id] === idx
+                          ? 'border-[#004a99] bg-[#eef6ff] shadow-md'
+                          : 'border-white bg-white hover:border-slate-200 hover:shadow-sm'
+                      }`}
+                    >
+                      <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center mr-4 text-xs font-bold shrink-0 transition-colors ${
+                        userAnswers[currentQuestion.id] === idx
+                          ? 'bg-[#004a99] border-[#004a99] text-white'
+                          : 'border-slate-300 text-slate-500 group-hover:border-[#004a99]'
+                      }`}>
+                        {String.fromCharCode(65 + idx)}
+                      </div>
+                      <span className={`font-medium ${userAnswers[currentQuestion.id] === idx ? 'text-[#004a99]' : 'text-slate-700'}`}>
+                        {option}
+                      </span>
+                    </button>
+                  ))
+                )}
               </div>
             </div>
 

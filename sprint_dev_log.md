@@ -138,8 +138,8 @@ This log tracks the logic, variables, and question mapping for all standardized 
 
 ### Sprint ID: 104 (DM Sprint A)
 **Questions 59-76**
-- **Themes:** Office Assignments (Text Logic), Health Claims (Syllogisms), Club Survey (Venn), Component Failure (Probability).
-- **Logic:** Logical deduction, Venn intersections, and independent probability events.
+- **Themes:** Office Assignments (Deduction), Health Claims (Syllogisms), Hospital Shifts (Sequencing), Generic Drugs (Arguments), Club Survey (Venn).
+- **Logic:** Multi-part syllogism scoring (2/1/0), logical sequencing, strengthening arguments, and Venn data extraction.
 
 ---
 
