@@ -308,7 +308,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     return (
       <div className="flex flex-col h-full">
         {renderHeader()}
-        <div className="p-8 space-y-4">
+        <div className="p-8 space-y-4 flex-1 overflow-auto">
           <ul className="space-y-3">
             {activeData.premises.map((p: string, i: number) => (
               <li key={i} className="flex gap-4 items-start">
@@ -318,6 +318,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
             ))}
           </ul>
         </div>
+        {renderNotes()}
       </div>
     );
   }
@@ -326,7 +327,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
     return (
       <div className="flex flex-col h-full items-center">
         {renderHeader()}
-        <div className="p-4 w-full flex justify-center">
+        <div className="p-4 w-full flex justify-center flex-1 overflow-auto">
           <svg viewBox="0 0 400 400" className="w-full max-w-sm drop-shadow-xl">
             {/* Circles */}
             <circle cx="160" cy="160" r="100" fill="rgba(0, 74, 153, 0.2)" stroke="#004a99" strokeWidth="2" />
@@ -352,6 +353,7 @@ export const DataSourceRenderer: React.FC<DataSourceRendererProps> = ({ type, da
             <text x="350" y="350" className="text-xs font-bold fill-slate-400 italic">Outside: {activeData.values.none}</text>
           </svg>
         </div>
+        {renderNotes()}
       </div>
     );
   }

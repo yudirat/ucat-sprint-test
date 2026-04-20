@@ -50,6 +50,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["East", 8200, 4.50, 70],
               ["South", 15000, 7.20, 55],
               ["West", 9800, 5.80, 60]
+            ],
+            notes: [
+              "Daily Profit = [Passengers × Price] × (1 - [Op. Cost %] / 100)",
+              "Absolute Operating Cost = [Passengers × Price] × ([Op. Cost %] / 100)",
+              "Passenger numbers are recorded per 24-hour cycle."
             ]
           }
         },
@@ -62,7 +67,12 @@ export const ucatSprintTests: UCATSet[] = [
           data: {
             title: 'Energy Sources 2024',
             total: '2400 TWh',
-            data: { Nuclear: 25, Gas: 35, Renewables: 30, Coal: 10 }
+            data: { Nuclear: 25, Gas: 35, Renewables: 30, Coal: 10 },
+            notes: [
+              "TWh = Terawatt-hours (10^12 Watt-hours).",
+              "Renewables includes Wind, Solar, and Hydro.",
+              "Production targets for 2030 aim to eliminate Coal entirely."
+            ]
           }
         },
         {
@@ -75,7 +85,11 @@ export const ucatSprintTests: UCATSet[] = [
             title: 'Branch Revenue (£m)',
             labels: ['London', 'Manchester', 'Birmingham', 'Glasgow', 'Cardiff'],
             data: [45, 32, 28, 22, 18],
-            unit: '£m'
+            unit: '£m',
+            notes: [
+              "Target Revenue for all branches is £30m per annum.",
+              "Growth targets are set relative to the previous year's performance."
+            ]
           }
         },
         {
@@ -85,9 +99,14 @@ export const ucatSprintTests: UCATSet[] = [
           title: 'Stock Indices',
           context: 'Value of two indices over 5 months.',
           data: {
-            timeHours: [1, 2, 3, 4, 5],
+            months: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
             vanA_Dist: [100, 110, 105, 120, 130],
-            vanB_Dist: [90, 95, 100, 105, 110]
+            vanB_Dist: [90, 95, 100, 105, 110],
+            rowLabels: ['Index A (Value)', 'Index B (Value)'],
+            notes: [
+              "Percentage Increase = ([New Value - Old Value] / [Old Value]) × 100",
+              "Volatility is measured by the standard deviation of monthly changes."
+            ]
           }
         }
       ]
@@ -234,23 +253,29 @@ export const ucatSprintTests: UCATSet[] = [
           id: 1,
           questionRange: [19, 27],
           type: 'MULTI_TABLE',
-          title: 'Healthcare Costs',
+          title: 'Healthcare Economics',
           context: 'Medical costs in local currency (Δ) and exchange rates.',
           data: {
+            headers: ["Equipment", "Purchase Cost (Δ)", "Maint. (% per yr)"],
             equipment: [
-              ["MRI", 850000, "12%"],
-              ["X-Ray", 120000, "8%"],
-              ["Bed", 4500, "5%"]
+              ["MRI Scanner", 850000, "12%"],
+              ["X-Ray Machine", 120000, "8%"],
+              ["Bed Unit", 4500, "5%"]
             ],
-            exchange: { GBP: 0.85, USD: 1.10 }
+            exchange: { GBP: 0.85, USD: 1.10 },
+            notes: [
+              "Annual Maintenance (Δ) = Purchase Cost × Maint. %",
+              "Conversion: Value in [Currency] = Value in Δ × [Exchange Rate]",
+              "Δ represents the internal healthcare accounting unit."
+            ]
           }
         },
         {
           id: 2,
           questionRange: [28, 36],
           type: 'TABLE',
-          title: 'Flight Scheduling',
-          context: 'Flight durations and fuel usage.',
+          title: 'Flight Scheduling & Efficiency',
+          context: 'Flight durations, distances, and fuel consumption metrics.',
           data: {
             headers: ["Flight", "Distance (km)", "Time (hr)", "Fuel (kg)"],
             rows: [
@@ -258,6 +283,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["LHR-DXB", 5400, 7.0, 38000],
               ["LHR-SIN", 10800, 13.0, 85000],
               ["LHR-SYD", 17000, 22.0, 140000]
+            ],
+            notes: [
+              "Average Speed (km/h) = Distance / Time",
+              "Fuel Efficiency (kg/km) = Fuel / Distance",
+              "Costs are calculated based on a fuel price of £1.20/kg."
             ]
           }
         }
@@ -632,6 +662,11 @@ export const ucatSprintTests: UCATSet[] = [
               "C must be in Office 1.",
               "If D is in Office 2, then E must also be in Office 2.",
               "F cannot be in Office 1 or Office 3."
+            ],
+            notes: [
+              "Rule 1: Office Capacity = 2 individuals per room.",
+              "Rule 2: Mutually exclusive pairs (e.g., A & B) must be split.",
+              "Rule 3: Conditional assignments (If X then Y) must be strictly followed."
             ]
           }
         },
@@ -667,7 +702,12 @@ export const ucatSprintTests: UCATSet[] = [
               ac: 5,
               abc: 7,
               none: 23
-            }
+            },
+            notes: [
+              "abc: Students belonging to all three clubs.",
+              "ab, bc, ac: Students belonging to exactly two clubs.",
+              "none: Students not participating in any of the listed clubs."
+            ]
           }
         },
         {
@@ -682,6 +722,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["Sensor A", "0.5%", "1.2%", "2.5%", "4.0%", "6.5%", 15],
               ["Processor B", "0.2%", "0.4%", "0.8%", "1.5%", "3.0%", 120],
               ["Battery C", "1.0%", "2.5%", "5.0%", "12.0%", "25.0%", 45]
+            ],
+            notes: [
+              "Annual Failure %: The probability of a new component failing within that specific year.",
+              "Cumulative Failure: Sum of annual failure rates over a multi-year period.",
+              "Replacement Cost: The flat fee incurred per component failure."
             ]
           }
         }
@@ -1069,11 +1114,17 @@ export const ucatSprintTests: UCATSet[] = [
           data: {
             pieTotal: 15.8, // £ Billion
             pieData: { Fashion: 32, Tech: 28, Home: 22, Food: 18 },
+            tableHeaders: ["Region", "Region Share", "Base Shipping (£)"],
             renewableTable: [ 
               ["UK", "45%", 5.50], // Market, Region Share, Base Shipping Cost (£)
               ["EU", "35%", 12.80],
               ["US", "15%", 25.00],
               ["RoW", "5%", 45.00]
+            ],
+            notes: [
+              "Segment Revenue = [Total Revenue] × [Segment Share %]",
+              "Region Revenue = [Total Revenue] × [Region Share %]",
+              "Shipping costs are per standard delivery parcel."
             ]
           }
         },
@@ -1090,6 +1141,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["Vax-B", 92.1, 8400, 680, 24],
               ["Vax-C", 76.8, 22000, 320, 12],
               ["Vax-D", 84.2, 15000, 510, 15]
+            ],
+            notes: [
+              "Total Trial Cost = [Sample Size] × [Cost per Patient]",
+              "Successful Outcomes = [Sample Size] × [Success Rate %]",
+              "Cost per Success = [Total Trial Cost] / [Successful Outcomes]"
             ]
           }
         }
@@ -1447,6 +1503,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["Titanium-64", 45, 4.43, 28.50, 8],
               ["Aluminium-7075", 15, 2.81, 4.20, 5],
               ["Stainless-316L", 30, 8.00, 2.10, 3]
+            ],
+            notes: [
+              "Total Batch Cost = [Mass (kg)] × [Cost per kg]",
+              "Scrap Cost = [Total Batch Cost] × [Scrap % / 100]",
+              "Production Capacity (units/shift) = [Shift Length] / [Cycle Time]"
             ]
           }
         },
@@ -1456,11 +1517,17 @@ export const ucatSprintTests: UCATSet[] = [
           type: 'MULTI_TABLE',
           title: 'District Health Metrics',
           data: {
+            headers: ["District", "Pop (000s)", "Funding ($/cap)", "Vax Rate (%)"],
             districts: [
               ["North", 120, 45, "82%"], // Name, Pop(k), Funding/Cap($), Vax Rate
               ["South", 250, 38, "75%"],
               ["East", 85, 52, "90%"],
               ["West", 180, 41, "88%"]
+            ],
+            notes: [
+              "Total Funding = [Population × 1000] × [Funding per Capita]",
+              "Vaccinated Population = [Population × 1000] × [Vax Rate %]",
+              "Pop (000s) indicates population in thousands."
             ]
           }
         },
@@ -1472,7 +1539,13 @@ export const ucatSprintTests: UCATSet[] = [
           data: {
             timeHours: [1, 2, 3, 4, 5], // Days
             vanA_Dist: [1.20, 1.35, 1.28, 1.42, 1.55], // Token X Price ($)
-            fees: { Ex_A: "0.1% fee", Ex_B: "$5 flat fee", Ex_C: "0.5% spread" }
+            rowLabels: ["Token X Price ($)"],
+            fees: { Ex_A: "0.1% fee", Ex_B: "$5 flat fee", Ex_C: "0.5% spread" },
+            notes: [
+              "Effective Price (Buy) = [Market Price] + [Fee/Spread]",
+              "Percentage Change = ([New Price - Old Price] / [Old Price]) × 100",
+              "Arbitrage Profit = [Sell Price - Buy Price] - [Total Fees]"
+            ]
           }
         },
         {
@@ -1487,6 +1560,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["Corn", 8000, 0.18, 25],
               ["Rice", 6200, 0.42, 18],
               ["Soy", 3100, 0.55, 10]
+            ],
+            notes: [
+              "Gross Revenue = [Yield] × [Price] × [Hectares]",
+              "Net Revenue = [Gross Revenue] × (1 - [Drought Loss %] / 100)",
+              "Drought loss refers to the percentage of yield lost to lack of water."
             ]
           }
         }
@@ -1641,6 +1719,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["Seed", 2.0, 0.5, 80],
               ["Series A", 8.0, 2.0, 64],
               ["Series B", 40.0, 10.0, 51.2]
+            ],
+            notes: [
+              "Post-money Valuation = [Pre-money Valuation] + [Investment]",
+              "Founder Stake Value = [Post-money Valuation] × [Founder Stake % / 100]",
+              "Dilution % = ([New Investment] / [Post-money Valuation]) × 100"
             ]
           }
         },
@@ -1656,6 +1739,11 @@ export const ucatSprintTests: UCATSet[] = [
               ["Year 1", 450, 70], // Auto: Depr(50) + Maint(20)
               ["Year 2", 450, 70],
               ["Year 3", 450, 70]
+            ],
+            notes: [
+              "Annual Manual Cost = [Staff Count] × [Monthly Salary] × 12",
+              "Annual Auto Cost = [Upfront Cost / Lifetime] + [Annual Maintenance]",
+              "Breakeven (Months) = [Upfront Cost] / ([Annual Manual Cost - Annual Maintenance] / 12)"
             ]
           }
         },
@@ -1667,10 +1755,16 @@ export const ucatSprintTests: UCATSet[] = [
           data: {
             pieTotal: 100, // % of users
             pieData: { Basic: 50, Pro: 35, Elite: 15 },
+            tableHeaders: ["Segment", "Monthly Base ($)", "Overage ($/GB)"],
             renewableTable: [ // Segment, Monthly Base ($), Overage ($/GB)
               ["Basic", 25, 10],
               ["Pro", 55, 5],
               ["Elite", 95, 0]
+            ],
+            notes: [
+              "Total Monthly Bill = [Monthly Base Fee] + ([GB Overage] × [Overage Rate])",
+              "ARPU = Average Revenue Per User.",
+              "Elite segment includes unlimited data (no overage fees)."
             ]
           }
         },
@@ -1683,7 +1777,12 @@ export const ucatSprintTests: UCATSet[] = [
             timeHours: [1, 2, 3, 4, 5], // Time of Day
             vanA_Dist: [30, 45, 120, 150, 80], // Price/MWh ($)
             vanB_Dist: [50, 60, 100, 110, 70], // Demand (GW)
-            storageLoss: "10%"
+            rowLabels: ["Price ($/MWh)", "Demand (GW)"],
+            notes: [
+              "Available Stored Energy = [Stored Amount] × (1 - [Storage Loss %])",
+              "Revenue from Storage = [Available Energy] × [Current Price]",
+              "Storage Loss: 10% indicates a 10% reduction in energy during the storage cycle."
+            ]
           }
         }
       ]
