@@ -287,9 +287,9 @@ export const dmSprints: UCATSet[] = [
           context: 'Decide whether each conclusion follows from the statements provided.',
           data: {
             premises: [
-              "Q1: All Protocol X facilities must adopt Standard Y. Some Standard Y are not eligible for Subsidy. No ineligible facility has specialized trauma.",
-              "Q2: Only Class 3 certified tools are permitted in Neurosurgery. All Class 3 tools are calibrated annually. Most tools calibrated annually are compatible with Nexus-9.",
-              "Q3: If registrar is assigned to Ward A, they cannot be on Emergency Roster. Every registrar not on Emergency Roster has completed Advanced Triage."
+              "257: All Protocol X facilities must adopt Standard Y. Some Standard Y are not eligible for Subsidy. No ineligible facility has specialized trauma.",
+              "258: Only Class 3 certified tools are permitted in Neurosurgery. All Class 3 tools are calibrated annually. Most tools calibrated annually are compatible with Nexus-9.",
+              "259: If registrar is assigned to Ward A, they cannot be on Emergency Roster. Every registrar not on Emergency Roster has completed Advanced Triage."
             ],
             notes: [
               "Yes: The conclusion logically follows from the premises.",
@@ -305,11 +305,11 @@ export const dmSprints: UCATSet[] = [
           title: 'Clinical Research Committee',
           context: 'Five researchers presenting five studies in five consecutive slots.',
           data: {
-            text: "Researchers: Dr. Aris, Dr. Bell, Dr. Chen, Dr. Deng, Dr. Ellis. Studies: Oncology, Virology, Genetics, Neurology, Cardiology. Slots: 10:00, 10:30, 11:00, 11:30, 12:00.\n\n1. Dr. Bell is exactly 1 hour after Genetics.\n2. Oncology is at 11:30.\n3. Dr. Ellis (not Cardiology/Virology) is earlier than Dr. Aris.\n4. Neurology (Dr. Deng) is immediately before Dr. Aris.\n5. Dr. Chen is at 10:00, but not Genetics.",
+            text: "Researchers: Dr. Aris, Dr. Bell, Dr. Chen, Dr. Deng, Dr. Ellis. Studies: Oncology, Virology, Genetics, Neurology, Cardiology. Slots: 10:00, 10:30, 11:00, 11:30, 12:00.\n\n1. Dr. Chen is at 10:00.\n2. Dr. Bell (Oncology) is at 11:30.\n3. Dr. Deng is in Neurology.\n4. Genetics is immediately before Neurology.\n5. Dr. Aris is exactly 1 hour after Dr. Deng.\n6. Dr. Ellis is not in Cardiology.",
             notes: [
               "Logic Grid recommended for multi-variable puzzles.",
-              "Fixed point: Chen (10:00), Oncology (11:30).",
-              "Chain: Deng(Neurology) -> Aris (+30m)."
+              "Fixed point: Chen (10:00), Bell (11:30).",
+              "Chain: Genetics -> Deng (Neuro) -> [30m] -> Bell (Onco) -> [30m] -> Aris."
             ]
           }
         },
@@ -320,7 +320,7 @@ export const dmSprints: UCATSet[] = [
           title: 'Evaluative Argumentation',
           context: 'Select the strongest argument for or against the provided proposition.',
           data: {
-            text: "Q6: Proposition regarding compulsory 'Rural Placement' for medical graduates.\nQ7: Proposition regarding 'Final Decision Authority' for AI in radiology.\nQ8: Proposition regarding prohibiting patents for 'Life-Saving' medications.",
+            text: "262: Proposition regarding compulsory 'Rural Placement' for medical graduates.\n263: Proposition regarding 'Final Decision Authority' for AI in radiology.\n264: Proposition regarding prohibiting patents for 'Life-Saving' medications.",
             notes: [
               "Strong Argument: Addresses the core of the issue with evidence or direct logic.",
               "Weak Argument: Relies on assumptions, secondary factors (cost), or pure speculation."
@@ -347,8 +347,8 @@ export const dmSprints: UCATSet[] = [
             },
             notes: [
               "Total Staff (N) = 240.",
-              "Values represent the number of unique staff in each intersection.",
-              "Q11 concerns the relationship between Emergency, Administration, and Neonatal."
+              "Values represent the number of unique staff in each intersection (disjoint regions).",
+              "267 concerns the relationship between Emergency, Administration, and Neonatal."
             ]
           }
         },
@@ -396,7 +396,7 @@ export const dmSprints: UCATSet[] = [
         text: "Which researcher is presenting the Virology study?",
         options: ["Dr. Aris", "Dr. Bell", "Dr. Chen", "Dr. Deng"],
         answerIndex: 0,
-        explanation: "Logic Grid Result: 10:00 Chen (Cardio); 10:30 Ellis (Genetics); 11:00 Deng (Neuro); 11:30 Bell (Onco); 12:00 Aris (Virology). Thus Aris is Virology."
+        explanation: "Logic Grid: 10:00 Chen (Cardio), 10:30 Ellis (Genetics), 11:00 Deng (Neuro), 11:30 Bell (Onco), 12:00 Aris (Virology). Aris is Virology."
       },
       {
         id: 261,
@@ -446,40 +446,40 @@ export const dmSprints: UCATSet[] = [
         text: "How many staff members are trained in Neonatal Care but neither Emergency Surgery nor Radiology?",
         options: ["55", "65", "75", "85"],
         answerIndex: 1,
-        explanation: "Total Neonatal (110) - (N&E 35) - (N&R 20) + (All Three 10) = 65."
+        explanation: "Total Neonatal (110) - (N&E 25) - (N&R 10) - (All Three 10) = 65."
       },
       {
         id: 266,
         text: "What is the total number of staff members who are trained in at least two of these specialties?",
         options: ["60", "70", "80", "90"],
         answerIndex: 0,
-        explanation: "(N&E: 35-10) + (E&R: 25-10) + (N&R: 20-10) + (All 10) = 25 + 15 + 10 + 10 = 60."
+        explanation: "(N&E: 25) + (E&R: 15) + (N&R: 10) + (All 10) = 60."
       },
       {
         id: 267,
-        text: "Which diagram correctly represents: 'No Emergency Surgeon is a member of the Administration, but some Neonatal Care workers are both Emergency Surgeons and Administration members'?",
+        text: "Which diagram correctly represents: 'All Emergency Surgeons are trained in Radiology, and some Radiology-trained staff are also in Neonatal care, but no Emergency Surgeon is in Neonatal care'?",
         options: [
-          "Admin separate from Emergency, Neonatal overlaps both.",
-          "Neonatal overlaps both Admin and Emergency, but Admin and Emergency also overlap.",
-          "Neonatal overlaps both, where Admin-Neonatal intersection does not touch Emergency.",
-          "Admin and Emergency separate, but Neonatal intersects both such that it creates an intersection of all three."
+          "Radiology circle contains Emergency; Neonatal circle overlaps Radiology but does not touch Emergency.",
+          "Neonatal overlaps both Radiology and Emergency, and Radiology also contains Emergency.",
+          "Radiology and Neonatal are separate circles, and Emergency is inside Radiology.",
+          "All three circles overlap such that there is a central intersection of all three."
         ],
-        answerIndex: 3,
-        explanation: "Admin and Emergency must not intersect. Neonatal must intersect both, and importantly, the prompt implies a region exists where individuals are in all three, which would normally violate 'No E is Admin' unless the 'some Neonatal are both' part is the focus. Actually, Option D with the proper intersection logic is correct."
+        answerIndex: 0,
+        explanation: "Emergency is a subset of Radiology (inside). Neonatal overlaps Radiology (some) but must stay separate from Emergency (no intersection)."
       },
       {
         id: 268,
         text: "If a person tests positive, what is the probability (to the nearest whole percent) that they actually have the mutation?",
         options: ["1%", "4%", "20%", "99%"],
         answerIndex: 1,
-        explanation: "Prevalence = 0.2%. Sensitivity = 99%. FPR = 5%. PPV = (0.99 * 0.002) / ((0.99 * 0.002) + (0.05 * 0.998)) = 0.00198 / (0.00198 + 0.0499) = 0.00198 / 0.05188 ≈ 3.8% (rounds to 4%)."
+        explanation: "PPV = (Sensitivity * Prevalence) / [(Sensitivity * Prevalence) + (FPR * (1-Prevalence))] = (0.99 * 0.002) / (0.00198 + 0.0499) ≈ 3.8%."
       },
       {
         id: 269,
         text: "In a group of 10,000 individuals, how many are expected to receive a 'False Positive' result?",
         options: ["50", "499", "500", "990"],
         answerIndex: 2,
-        explanation: "Population = 10,000. Healthy group ≈ 9,980. FPR = 5%. 9,980 * 0.05 = 499. Option C (500) is the closest expected value."
+        explanation: "Healthy individuals = 10,000 * 0.998 = 9,980. False Positives = 9,980 * 0.05 = 499 (approx 500)."
       },
       {
         id: 270,
@@ -491,14 +491,14 @@ export const dmSprints: UCATSet[] = [
           "The test will fail to identify 5% of the people who actually have the mutation."
         ],
         answerIndex: 0,
-        explanation: "When prevalence is low, a 5% FPR generates many more false positives than true positives, making the test potentially unreliable as a solo diagnostic tool."
+        explanation: "Low prevalence means FPR (5%) creates many more false positives than true positives (0.2%)."
       },
       {
         id: 271,
         text: "If the population size doubles but the prevalence remains the same, what happens to the number of True Positives?",
         options: ["It stays the same.", "It doubles.", "It increases by 5%.", "It decreases by half."],
         answerIndex: 1,
-        explanation: "Number of affected individuals doubles, and since Sensitivity is constant, the number of True Positives also doubles."
+        explanation: "Prevalence is constant, so doubling the population doubles the number of cases and thus True Positives."
       }
     ]
   }
