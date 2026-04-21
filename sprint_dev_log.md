@@ -168,7 +168,6 @@ This log tracks the logic, variables, and question mapping for all standardized 
 ---
 
 ## [Section: Decision Making] - Elite Tier (15 Qs / 15.5 Mins)
-
 ### Sprint ID: 114 (DM Elite Sprint 1)
 **Questions 257-271**
 - **Section 1 (Syllogisms):** Protocol X/Standard Y (Undistributed middle), Class 3/Nexus-9 (Specific vs General), Ward A/Advanced Triage (Contrapositive).
@@ -177,7 +176,16 @@ This log tracks the logic, variables, and question mapping for all standardized 
 - **Section 4 (Venn):** Hospital Staffing Audit (240 staff, 3 categories). Set theory calculations.
 - **Section 5 (Probability):** Rare Mutation Screening. Base rate fallacy, Bayes' theorem applications.
 
+---
+
+### Sprint ID: 115 (SJT Elite Sprint 1)
+**Questions 133-166**
+- **Theme:** GMC-Aligned Professionalism and Ethical Integrity.
+- **Scenarios:** Social Media Confidentiality, Professional Boundaries, Impaired Colleagues, Duty of Candour (Error Disclosure), Research Integrity, and Informed Consent (Capacity).
+- **Logic:** Prioritizes patient safety and collective responsibility over hierarchy and personal convenience. Expanded to 34 questions to match 2026 format (50% length).
+
+---
+
 ### Sprint ID: 107 (SJT Sprint A)
-**Questions 109-132**
 - **Themes:** Confidentiality in Elevators, Teamwork on Wards, Social Media Professionalism.
 - **Logic:** Medical ethics, peer communication, and professional accountability.

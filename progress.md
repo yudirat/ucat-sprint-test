@@ -28,15 +28,16 @@
 - [x] Push to GitHub (https://github.com/yudirat/ucat-sprint-test)
 - [x] Deploy live site (https://yudirat.github.io/ucat-sprint-test/)
 
-## Phase 6: UCAT 2025 Standardized Sprints (50% Length)
-- [x] Transition to 2025 UCAT section structure (removing Abstract Reasoning)
+## Phase 6: UCAT 2026 Standardized Sprints (50% Length)
+- [x] Transition to 2026 UCAT section structure (removing Abstract Reasoning)
 - [x] Selection screen for individual section sprints
 - [x] Implement **Quantitative Reasoning** Sprints (108 Qs total / 6 Sprints)
 - [x] Implement **Verbal Reasoning** Sprints (66 Qs total / 3 Sprints)
-- [ ] Implement **Decision Making** Sprint (18 Qs / 18.5 Mins) - Planning Partial Credit
-- [ ] Implement **Situational Judgement** Sprint (34 Qs / 13 Mins)
+- [x] Implement **Decision Making** Sprint (18 Qs / 18.5 Mins)
+- [x] Implement **Situational Judgement** Sprint (34 Qs / 13 Mins)
 - [x] Logic audit and Sprint Dev Log initialization
 - [x] Implement **Partial Credit Scoring** for Syllogisms and SJT
-- [x] **Full System Audit:** Verified all 168 questions for mathematical accuracy and logical consistency.
+- [x] **Full System Audit:** Verified all 168+ questions for mathematical accuracy and logical consistency.
+- [x] **Elite Tier Integration:** Added high-difficulty "Elite Sprints" for all 4 sections with advanced logic (Bayes' Theorem, GMC Alignment, Kessler Syndrome).
 - [x] **Stimulus Renderer Refactor:** Implemented data-driven scenario selection and metadata (Title/Context) rendering for all stimuli.
 - [x] **Data Integrity:** Re-indexed all question IDs and Set IDs; added `questionRange` mapping to scenarios.

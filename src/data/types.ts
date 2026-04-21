@@ -6,6 +6,7 @@ export interface Question {
   explanation: string;
   image?: string; 
   type?: 'standard' | 'syllogism';
+  category?: 'APPROPRIATENESS' | 'IMPORTANCE';
   multiPartCorrect?: number[]; // For syllogisms: [1, 0, 1, 1, 0] (1=Follows, 0=Doesn't)
   multiPartLabels?: string[]; // ["Conclusion 1", "Conclusion 2", ...]
 }
@@ -16,6 +17,7 @@ export interface UCATSet {
   title: string;
   type: 'TABLE' | 'PIE_CHART' | 'BAR_CHART' | 'LINE_GRAPH' | 'MULTI_TABLE' | 'PIE_AND_TABLE' | 'IMAGE_SET' | 'TEXT_LOGIC' | 'SCENARIO' | 'PASSAGE';
   context: string;
+  tags?: string[];
   dataSource: any; 
   questions: Question[];
 }
