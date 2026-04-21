@@ -58,7 +58,12 @@ export const dmSprints: UCATSet[] = [
           title: 'Hospital Shifts',
           context: 'Five doctors (P, Q, R, S, T) work different shifts.',
           data: {
-            text: "P works before Q. R works after S. T works between P and S. Q works last.",
+            premises: [
+              "P works before Q.",
+              "R works after S.",
+              "T works between P and S.",
+              "Q works last."
+            ],
             notes: ["Determine the relative order based on the temporal constraints."]
           }
         },
@@ -69,8 +74,11 @@ export const dmSprints: UCATSet[] = [
           title: 'Drug Prioritization',
           context: 'Should hospitals prioritize generic over brand-name drugs?',
           data: {
-            text: "Evaluate the strength of the following arguments regarding drug prioritization in healthcare settings.",
-            notes: ["A strong argument must be both relevant and logically sound."]
+            premises: [
+              "Evaluate the strength of the following arguments regarding drug prioritization in healthcare settings.",
+              "A strong argument must be both relevant and logically sound."
+            ],
+            notes: ["Focus on clinical efficacy and economic sustainability."]
           }
         },
         {
