@@ -12,7 +12,7 @@ export const dmSprints: UCATSet[] = [
       scenarios: [
         {
           id: 1,
-          questionRange: [59, 63],
+          questionRange: [59, 64],
           type: 'TEXT_LOGIC',
           title: 'Office Assignments',
           context: 'Six employees (A, B, C, D, E, F) are being assigned to three offices (1, 2, 3).',
@@ -33,7 +33,7 @@ export const dmSprints: UCATSet[] = [
         },
         {
           id: 2,
-          questionRange: [64, 68],
+          questionRange: [65, 65],
           type: 'TEXT_LOGIC',
           title: 'Health Claims',
           context: 'Evaluate the following conclusions based on the premises provided.',
@@ -53,7 +53,29 @@ export const dmSprints: UCATSet[] = [
         },
         {
           id: 3,
-          questionRange: [69, 72],
+          questionRange: [66, 66],
+          type: 'TEXT_LOGIC',
+          title: 'Hospital Shifts',
+          context: 'Five doctors (P, Q, R, S, T) work different shifts.',
+          data: {
+            text: "P works before Q. R works after S. T works between P and S. Q works last.",
+            notes: ["Determine the relative order based on the temporal constraints."]
+          }
+        },
+        {
+          id: 4,
+          questionRange: [67, 67],
+          type: 'TEXT_LOGIC',
+          title: 'Drug Prioritization',
+          context: 'Should hospitals prioritize generic over brand-name drugs?',
+          data: {
+            text: "Evaluate the strength of the following arguments regarding drug prioritization in healthcare settings.",
+            notes: ["A strong argument must be both relevant and logically sound."]
+          }
+        },
+        {
+          id: 5,
+          questionRange: [68, 72],
           type: 'VENN_DIAGRAM',
           title: 'Club Memberships',
           context: 'A survey of 100 students regarding three clubs: Coding (C), Chess (H), and Art (A).',
@@ -77,7 +99,7 @@ export const dmSprints: UCATSet[] = [
           }
         },
         {
-          id: 4,
+          id: 6,
           questionRange: [73, 76],
           type: 'TABLE',
           title: 'Product Reliability Analysis',
@@ -136,6 +158,13 @@ export const dmSprints: UCATSet[] = [
       },
       {
         id: 64,
+        text: "Which of the following MUST be true if E is in Office 3?",
+        options: ["D is in Office 1", "D is in Office 3", "B is in Office 2", "A is in Office 3", "A and D are together"],
+        answerIndex: 1,
+        explanation: "If E is in 3, and Rule 4 says 'If D is in 2, then E is in 2', the contrapositive is 'If E is not in 2, D is not in 2'. Since D cannot be in 1 (C and F are in 1 and 2), D must be in 3 with E."
+      },
+      {
+        id: 65,
         text: "Does the conclusion follow from the premises?",
         type: 'syllogism',
         multiPartLabels: [
@@ -151,14 +180,14 @@ export const dmSprints: UCATSet[] = [
         explanation: "1: No. 'Some nutrient-dense are expensive' and 'Organic are nutrient-dense' doesn't guarantee an organic-expensive overlap. 4: Yes. Expensive foods are nutrient-dense and not subsidized (Rule 3)."
       },
       {
-        id: 65,
-        text: "Which of the following MUST be true if E is in Office 3?",
-        options: ["D is in Office 1", "D is in Office 3", "B is in Office 2", "A is in Office 3", "A and D are together"],
-        answerIndex: 1,
-        explanation: "If E is in 3, and Rule 4 says 'If D is in 2, then E is in 2', the contrapositive is 'If E is not in 2, D is not in 2'. Since D cannot be in 1 (C and F are in 1 and 2), D must be in 3 with E."
+        id: 66,
+        text: "Five doctors (P, Q, R, S, T) work different shifts. P works before Q. R works after S. T works between P and S. If Q works last, who works the second shift?",
+        options: ["P", "Q", "R", "S", "T"],
+        answerIndex: 4,
+        explanation: "Order: P - T - S - R - Q. T is second because P must be before Q, and T is between P and S, and R is after S."
       },
       {
-        id: 66,
+        id: 67,
         text: "Which of the following arguments best strengthens the claim that hospitals should prioritize generic over brand-name drugs?",
         options: [
           "Generic drugs have the same active ingredients and safety profiles as brand-name drugs but cost significantly less.",
@@ -169,13 +198,6 @@ export const dmSprints: UCATSet[] = [
         ],
         answerIndex: 0,
         explanation: "Option A directly supports the switch by proving clinical equivalence while highlighting the cost benefit, which is the primary driver for prioritizing generics."
-      },
-      {
-        id: 67,
-        text: "Five doctors (P, Q, R, S, T) work different shifts. P works before Q. R works after S. T works between P and S. If Q works last, who works the second shift?",
-        options: ["P", "Q", "R", "S", "T"],
-        answerIndex: 4,
-        explanation: "Order: P - T - S - R - Q. T is second because P must be before Q, and T is between P and S, and R is after S."
       },
       {
         id: 68,
